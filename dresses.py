@@ -15,6 +15,7 @@ soup = bs(main_page_content,'html.parser')
 
 #find the dresses section URL
 dresses_url_page = (str(soup.select_one("a[href*="+SECTION+"]" ))).split('"')[3]
+print(dresses_url_page)
 
 #create url adresses for all the dresses products
 dress_page = requests.get(dresses_url_page)
@@ -27,4 +28,6 @@ for adress in dress_prod:
     url_prod = temp.split('"')[1]
     if url_prod.endswith(".html"):
         products_url_list.append(URL + url_prod)
+
+products_url_list = products_url_list[1:]
 
