@@ -2,21 +2,33 @@ from df_products import get_data
 from selenium import webdriver as wb
 import time
 
-# start web browser
-browser = wb.Chrome("C:\Limor\Data Science ITC\Web Scraping Project\chromedriver.exe")
+chrome = "C:\Limor\Data Science ITC\Web Scraping Project\chromedriver.exe"
+url = "https://us.shein.com/Ruffle-Hem-Solid-Cami-Dress-p-1149736-cat-1727.html?" \
+      "scici=navbar_2~~tab01navbar05~~5~~real_1727~~SPcCccWomenCategory_default~~0~~0"
 
-# get source code
-browser.get("https://us.shein.com/Ruffle-Hem-Solid-Cami-Dress-p-1149736-cat-1727.html?scici=navbar_2~~tab01navbar05~~5~~real_1727~~SPcCccWomenCategory_default~~0~~0")
-html = browser.page_source
-time.sleep(2)
-#print(html)
+def get_html(url, chrome_exe):
+    # start web browser
+    browser = wb.Chrome(chrome_exe)
+    # get source code
+    browser.get(url)
+    html = browser.page_source
+    time.sleep(2)
+    browser.close()
+    #calling get_data
+    return html
 
-browser.close()
-#
-get_data(html)
 
+url_list = ["https://us.shein.com/Ruffle-Hem-Solid-Cami-Dress-p-1149736-cat-1727.html?scici=navbar_2~~tab01navbar05~~5~~real_1727~~SPcCccWomenCategory_default~~0~~0",
+            "https://us.shein.com/Tie-Front-Ruched-Bust-Floral-Bardot-Dress-p-1202505-cat-1727.html?scici=navbar_2~~tab01navbar05~~5~~real_1727~~SPcCccWomenCategory_default~~0~~0",
+            "https://us.shein.com/Tie-Shoulder-Solid-Cami-Dress-p-1195493-cat-1727.html?scici=navbar_2~~tab01navbar05~~5~~real_1727~~SPcCccWomenCategory_default~~0~~0"]
 
+list_dict = []
+for i in url_list:
+    html = get_html(url, chrome)
+    prod_dict = get_data(html)
+    list_dict.append(prod_dict)
 
+print(list_dict)
 "============================================================================================="
 
 # driver = wb.Chrome("C:\Limor\Data Science ITC\Web Scraping Project\chromedriver.exe")

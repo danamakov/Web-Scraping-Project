@@ -29,8 +29,8 @@ def get_data(content):
     for item in soup.find_all("div", {"class": "product-intro__description-table-item"}):
         prod_dict[item.text.split(":")[0].strip()] = item.text.split(":")[1].strip()
 
-
-    print(prod_dict)
-    prod_df = pd.DataFrame([prod_dict])
-    print(prod_df)
+    return prod_dict
+    # print(prod_dict)
+    # prod_df = pd.DataFrame([prod_dict])
+    # print(prod_df)
 
