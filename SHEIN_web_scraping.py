@@ -18,7 +18,7 @@ Authors: Limor Nunu, Dana Makov
 SECTION = "dresses"
 URL = "https://us.shein.com/"
 PRODUCT = "women-dresses"
-NUMBER_OF_PAGES = 4  # The maximum number of pages in the website, you can change this number to lower number.
+NUMBER_OF_PAGES = 1000  # The maximum number of pages in the website, you can change this number to lower number.
 
 
 def main():
