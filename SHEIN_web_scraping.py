@@ -1,9 +1,7 @@
-from selenium import webdriver as wb
 from bs4 import BeautifulSoup as bs
 from data_product import get_data
 import pandas as pd
 import requests
-import time
 
 """
 # ITC_project #
@@ -17,10 +15,10 @@ For doing so, we used selenium and beautifulsoup packages and wrote the script i
 Authors: Limor Nunu, Dana Makov
 """
 
-
 SECTION = "dresses"
 URL = "https://us.shein.com/"
 PRODUCT = "women-dresses"
+NUMBER_OF_PAGES = 4  # The maximum number of pages in the website, you can change this number to lower number.
 
 
 def main():
@@ -32,40 +30,46 @@ def main():
     return: DataFrame of all the info of each product.
     """
 
-    #create html of main page
+    # create html of main page
     main_page = requests.get(URL).content
-    soup = bs(main_page,'html.parser')
+    soup = bs(main_page, 'html.parser')
 
-    #find the dresses section URL
-    dresses_url_page = (str(soup.select_one("a[href*="+SECTION+"]" ))).split('"')[3]
+    # find the dresses section URL
+    dresses_url_page = (str(soup.select_one("a[href*=" + SECTION + "]"))).split('"')[3]
 
-    #create url adresses for all the dresses products
-    dress_page = requests.get(dresses_url_page).content
-    soup_dress = bs(dress_page,'html.parser')
-    dress_prod = soup_dress.findAll('a', href=True)
+    products_list = []      # get dict for each product
+    total_url_list = []     # get all products url
 
-    products_url_list = []
-    for adress in dress_prod:
-        temp = (str(adress).split('href='))[1]
-        url_prod = temp.split('"')[1].strip()
-        if url_prod.endswith(".html"):
-            products_url_list.append(URL + url_prod)
+    for page in range(1, NUMBER_OF_PAGES):
+        # changing the pages
+        url_page = dresses_url_page + f"&page={page}"
 
-    #list of url for each product
-    products_url_list = list(set(products_url_list[1:]))
-    #the first url is the main page of all dresses, so the list start from the 1st item
+        # create url adresses for all the dresses products in the page
+        dress_page = requests.get(url_page).content
+        soup_dress = bs(dress_page, 'html.parser')
+        dress_prod = soup_dress.findAll('a', href=True)
 
-    products_list = []
-    #get html and then the info of each product
-    for product in products_url_list:
+        products_url_list = []
+        for address in dress_prod:
+            temp = (str(address).split('href='))[1]
+            url_prod = temp.split('"')[1].strip()
+            if url_prod.endswith(".html"):
+                products_url_list.append(URL + url_prod)
+
+        # list of url for each product
+        for url1 in products_url_list[1:-4]:
+            total_url_list.append(url1)
+
+    total_url_list = list(set(total_url_list))
+    # the first url is the main page of all dresses, so the list start from the 1st item
+
+    # get html and then the info of each product
+    for product in total_url_list:
         products_list.append(get_data(product))
 
-    #creating DataFrame
+    # creating DataFrame
     prod_df = pd.DataFrame(products_list)
-    # with open("test_csv.csv","wb") as file:
-    #     file.pd.to_csv(prof_df)
-    prod_df.to_csv(r'test_csv.csv')
-    print(prod_df)
+    # print(prod_df)
 
 
 if __name__ == '__main__':

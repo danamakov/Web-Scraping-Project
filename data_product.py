@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup as bs
 from selenium_html import get_html
 
 
+
 def get_data(url):
     """
     The function get url of product,
