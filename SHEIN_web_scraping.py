@@ -1,8 +1,8 @@
 from bs4 import BeautifulSoup as bs
 from data_product import get_data
-import os
-import pandas as pd
+from creating_DF import make_df
 import requests
+from tqdm import tqdm
 
 """
 # ITC_project #
@@ -41,7 +41,7 @@ def main():
     products_list = []      # get dict for each product
     total_url_list = []     # get all products url
 
-    for page in range(1, NUMBER_OF_PAGES):
+    for page in tqdm(range(1, NUMBER_OF_PAGES)):
         # changing the pages
         url_page = dresses_url_page + f"&page={page}"
 
@@ -65,26 +65,18 @@ def main():
     # the first url is the main page of all dresses, so the list start from the 1st item
 
     # get html and then the info of each product
-    for product in total_url_list[:10]:
+    for product in tqdm(total_url_list[:5]):
         print(product)
         try:
             products_list.append(get_data(product))
         except AttributeError:
             pass
+        except ValueError:
+            pass
 
 
     # creating DataFrame
-    prod_df = pd.DataFrame(products_list)
-    print(prod_df)
-
-    if os.path.exists('dresses.csv') and os.stat('dresses.csv').st_size != 0:
-        prod_df.to_csv('dresses.csv', mode='a', index=False, header=False)
-    else:
-        prod_df.to_csv('dresses.csv', index=False)
-
-    d = pd.read_csv('dresses.csv')
-    d.drop_duplicates(subset=['ID'], inplace=True, keep='first')
-    d.to_csv('dresses.csv', index=False)
+    make_df(products_list)
 
 
 if __name__ == '__main__':
