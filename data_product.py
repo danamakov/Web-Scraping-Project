@@ -19,7 +19,7 @@ def get_data(url):
     item_id = soup.find("div", {"class": "product-intro__head-sku"}).text.strip().split()[1]
     prod_dict["ID"] = item_id
 
-    price = float(soup.find("div", {"class": "product-intro__head-price"}).text.strip().split("$")[1])
+    price = float(soup.find("div", {"class": "product-intro__head-price"}).text.split("$")[1].strip())
     prod_dict["price"] = price
 
 

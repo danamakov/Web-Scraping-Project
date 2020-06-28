@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup as bs
 from data_product import get_data
+import os
 import pandas as pd
 import requests
 
@@ -18,7 +19,7 @@ Authors: Limor Nunu, Dana Makov
 SECTION = "dresses"
 URL = "https://us.shein.com/"
 PRODUCT = "women-dresses"
-NUMBER_OF_PAGES = 1000  # The maximum number of pages in the website, you can change this number to lower number.
+NUMBER_OF_PAGES = 2  # The maximum number of pages in the website, you can change this number to lower number.
 
 
 def main():
@@ -64,12 +65,26 @@ def main():
     # the first url is the main page of all dresses, so the list start from the 1st item
 
     # get html and then the info of each product
-    for product in total_url_list:
-        products_list.append(get_data(product))
+    for product in total_url_list[:10]:
+        print(product)
+        try:
+            products_list.append(get_data(product))
+        except AttributeError:
+            pass
+
 
     # creating DataFrame
     prod_df = pd.DataFrame(products_list)
-    # print(prod_df)
+    print(prod_df)
+
+    if os.path.exists('dresses.csv') and os.stat('dresses.csv').st_size != 0:
+        prod_df.to_csv('dresses.csv', mode='a', index=False, header=False)
+    else:
+        prod_df.to_csv('dresses.csv', index=False)
+
+    d = pd.read_csv('dresses.csv')
+    d.drop_duplicates(subset=['ID'], inplace=True, keep='first')
+    d.to_csv('dresses.csv', index=False)
 
 
 if __name__ == '__main__':
