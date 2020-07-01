@@ -2,7 +2,7 @@ import pandas as pd
 import os
 
 
-def make_df(products_list):
+def make_df(products_list, product_type):
     """
     The function product list.
 
