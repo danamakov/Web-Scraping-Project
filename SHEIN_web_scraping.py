@@ -65,8 +65,8 @@ def main():
     # the first url is the main page of all dresses, so the list start from the 1st item
 
     # get html and then the info of each product
-    for product in tqdm(total_url_list[:5]):
-        print(product)
+    for product in tqdm(total_url_list[:10]):
+        # print(product)
         try:
             products_list.append(get_data(product))
         except AttributeError:
