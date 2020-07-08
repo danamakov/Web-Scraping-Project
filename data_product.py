@@ -1,19 +1,15 @@
-from bs4 import BeautifulSoup as bs
 from selenium_html import get_html
-
 
 
 def get_data(url):
     """
     The function get url of product,
-    call the get_html function to get the html of the url.
+    call the get_html function to get the soup of the url.
 
     return: dict of all the info of the product.
     """
 
-    # convert the url into html:
-    content = get_html(url)
-    soup = bs(content, 'html.parser')
+    soup = get_html(url)
 
     prod_dict = {}
 
