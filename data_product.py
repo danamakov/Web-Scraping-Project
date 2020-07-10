@@ -1,41 +1,57 @@
-from selenium_html import get_html
+from html_soup import get_soup
+import configuration as cfg
+
+
+def soup_find(soup, s_type, class_name):
+    """
+    :param soup: soup of the page
+    :param s_type: string of div or span
+    :param class_name: string of the class name
+    :return: text of the wanted class in the soup
+    """
+    return soup.find(s_type, {cfg.CLASS: class_name}).text
+
+
+def find_all(soup, class_name):
+    """
+    :param soup: soup of the page
+    :param class_name: string of the class name
+    :return: text of the wanted elements of the class in the soup
+    """
+    return soup.find_all(cfg.DIV, {cfg.CLASS: class_name})
 
 
 def get_data(url):
     """
-    The function get url of product,
-    call the get_html function to get the soup of the url.
-
-    return: dict of all the info of the product.
+    :param url: url address of the product
+    :return: dict of all the info of the product,
+             after call the get_html function to get the soup of the url
     """
 
-    soup = get_html(url)
-
+    soup = get_soup(url)
     prod_dict = {}
 
     # adding ID for the product:
-    item_id = soup.find("div", {"class": "product-intro__head-sku"}).text.strip().split()[1]
-    prod_dict["ID"] = item_id
+    prod_dict[cfg.ID] = soup_find(soup, cfg.DIV, cfg.CLASS_ID).strip().split()[cfg.ID_SPLIT_NUM]
 
     # adding price for the product:
-    price = float(soup.find("div", {"class": "product-intro__head-price"}).text.split("$")[1].strip())
-    prod_dict["price"] = price
+    prod_dict[cfg.PRICE] = float(soup_find(soup, cfg.DIV, cfg.CLASS_PRICE).split("$")[cfg.PRICE_SPLIT_NUM].strip())
 
     # adding average rate for the product:
-    average_rating = float(soup.find("div", {"class": "ave-rate"}).text.strip())
-    prod_dict["average_rating"] = average_rating
+    prod_dict[cfg.RATE] = float(soup_find(soup, cfg.DIV, cfg.CLASS_RATE).strip())
 
     # adding reviews amount for the product:
-    reviews_amount = soup.find("span", {"class": "product-intro__head-reviews-text color-blue-text"}).text.strip().split()[0]
-    prod_dict["reviews_amount"] = reviews_amount
+    prod_dict[cfg.RVW_AMOUNT] = soup_find(soup, cfg.SPAN, cfg.CLASS_RVW_AMOUNT).strip().split()[cfg.RVW_AMNT_SPLIT_NUM]
 
     # adding the percentage of product fit to size:
-    for sz in soup.find_all("div", {"class": "fit-item"}):
-        prod_dict[sz.text.split("  ")[0]] = sz.text.split("  ")[1]
+    for sz in find_all(soup, cfg.CLASS_FIT):
+        prod_dict[sz.text.split(cfg.FIT_SPLIT_TYPE)[cfg.FIT_FIRST_SPLIT_NUM]] = \
+            sz.text.split(cfg.FIT_SPLIT_TYPE)[cfg.FIT_SEC_SPLIT_NUM]
 
     # adding the description of the product:
-    for item in soup.find_all("div", {"class": "product-intro__description-table-item"}):
-        prod_dict[item.text.split(":")[0].strip()] = item.text.split(":")[1].strip()
+    for item in find_all(soup, cfg.CLASS_DESCRIPTION):
+        prod_dict[item.text.split(cfg.DESC_SPLIT_TYPE)[cfg.DESC_FIRST_SPLIT_NUM].strip()] = \
+            item.text.split(cfg.DESC_SPLIT_TYPE)[cfg.DESC_SEC_SPLIT_NUM].strip()
 
     return prod_dict
 
