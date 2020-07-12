@@ -1,0 +1,204 @@
+2020-07-12 19:49:15,302 ----------- << NEW RUN 2020-07-12 19:49:15.302134 >> -----------
+2020-07-12 19:49:15,304 Starting new HTTPS connection (1): us.shein.com:443
+2020-07-12 19:49:16,855 https://us.shein.com:443 "GET / HTTP/1.1" 200 None
+2020-07-12 19:49:17,234 Starting new HTTPS connection (1): us.shein.com:443
+2020-07-12 19:49:18,469 https://us.shein.com:443 "GET /women-dresses-c-1727.html?&amp;ici=us_tab01navbar05 HTTP/1.1" 200 None
+2020-07-12 19:49:19,622 Starting new HTTPS connection (1): us.shein.com:443
+2020-07-12 19:49:21,826 https://us.shein.com:443 "GET /https://us.shein.com/women-dresses-c-1727.html?&amp;ici=us_tab01navbar05?currency=USD&min_price=0&max_price=30&page=1 HTTP/1.1" 200 None
+2020-07-12 19:49:23,675 POST http://127.0.0.1:64592/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": ["--headless"]}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": ["--headless"]}}}
+2020-07-12 19:49:23,677 Starting new HTTP connection (1): 127.0.0.1:64592
+2020-07-12 19:49:26,116 http://127.0.0.1:64592 "POST /session HTTP/1.1" 200 715
+2020-07-12 19:49:26,117 Finished Request
+2020-07-12 19:49:26,117 POST http://127.0.0.1:64592/session/e250b057a7f0937e9c269b739e96f21e/url {"url": "https://us.shein.com//Tie-Shoulder-Solid-Cami-Dress-p-1195493-cat-1727.html"}
+2020-07-12 19:49:34,230 http://127.0.0.1:64592 "POST /session/e250b057a7f0937e9c269b739e96f21e/url HTTP/1.1" 200 14
+2020-07-12 19:49:34,231 Finished Request
+2020-07-12 19:49:34,231 GET http://127.0.0.1:64592/session/e250b057a7f0937e9c269b739e96f21e/source {}
+2020-07-12 19:49:34,296 http://127.0.0.1:64592 "GET /session/e250b057a7f0937e9c269b739e96f21e/source HTTP/1.1" 200 1053520
+2020-07-12 19:49:34,305 Finished Request
+2020-07-12 19:49:36,306 DELETE http://127.0.0.1:64592/session/e250b057a7f0937e9c269b739e96f21e/window {}
+2020-07-12 19:49:36,373 http://127.0.0.1:64592 "DELETE /session/e250b057a7f0937e9c269b739e96f21e/window HTTP/1.1" 200 12
+2020-07-12 19:49:36,373 Finished Request
+2020-07-12 19:49:37,218 POST http://127.0.0.1:64696/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": ["--headless"]}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": ["--headless"]}}}
+2020-07-12 19:49:37,220 Starting new HTTP connection (1): 127.0.0.1:64696
+2020-07-12 19:49:39,689 http://127.0.0.1:64696 "POST /session HTTP/1.1" 200 717
+2020-07-12 19:49:39,689 Finished Request
+2020-07-12 19:49:39,690 POST http://127.0.0.1:64696/session/c84f445851402dd0e08110323e0c9f0c/url {"url": "https://us.shein.com//Ditsy-Floral-Print-Knotted-Cami-Dress-p-1141782-cat-1727.html"}
+2020-07-12 19:49:44,915 http://127.0.0.1:64696 "POST /session/c84f445851402dd0e08110323e0c9f0c/url HTTP/1.1" 200 14
+2020-07-12 19:49:44,916 Finished Request
+2020-07-12 19:49:44,916 GET http://127.0.0.1:64696/session/c84f445851402dd0e08110323e0c9f0c/source {}
+2020-07-12 19:49:45,000 http://127.0.0.1:64696 "GET /session/c84f445851402dd0e08110323e0c9f0c/source HTTP/1.1" 200 1033085
+2020-07-12 19:49:45,009 Finished Request
+2020-07-12 19:49:47,010 DELETE http://127.0.0.1:64696/session/c84f445851402dd0e08110323e0c9f0c/window {}
+2020-07-12 19:49:47,090 http://127.0.0.1:64696 "DELETE /session/c84f445851402dd0e08110323e0c9f0c/window HTTP/1.1" 200 12
+2020-07-12 19:49:47,090 Finished Request
+2020-07-12 19:49:47,934 POST http://127.0.0.1:64791/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": ["--headless"]}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": ["--headless"]}}}
+2020-07-12 19:49:47,935 Starting new HTTP connection (1): 127.0.0.1:64791
+2020-07-12 19:49:50,359 http://127.0.0.1:64791 "POST /session HTTP/1.1" 200 716
+2020-07-12 19:49:50,360 Finished Request
+2020-07-12 19:49:50,360 POST http://127.0.0.1:64791/session/4b3e5c0008fa1c5e984c767956916a6d/url {"url": "https://us.shein.com//Frill-Trim-Ruched-Bust-Dress-p-1237343-cat-1727.html"}
+2020-07-12 19:49:55,843 http://127.0.0.1:64791 "POST /session/4b3e5c0008fa1c5e984c767956916a6d/url HTTP/1.1" 200 14
+2020-07-12 19:49:55,843 Finished Request
+2020-07-12 19:49:55,843 GET http://127.0.0.1:64791/session/4b3e5c0008fa1c5e984c767956916a6d/source {}
+2020-07-12 19:49:55,915 http://127.0.0.1:64791 "GET /session/4b3e5c0008fa1c5e984c767956916a6d/source HTTP/1.1" 200 1135572
+2020-07-12 19:49:55,925 Finished Request
+2020-07-12 19:49:57,925 DELETE http://127.0.0.1:64791/session/4b3e5c0008fa1c5e984c767956916a6d/window {}
+2020-07-12 19:49:57,989 http://127.0.0.1:64791 "DELETE /session/4b3e5c0008fa1c5e984c767956916a6d/window HTTP/1.1" 200 12
+2020-07-12 19:49:57,990 Finished Request
+2020-07-12 19:49:58,840 POST http://127.0.0.1:64891/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": ["--headless"]}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": ["--headless"]}}}
+2020-07-12 19:49:58,842 Starting new HTTP connection (1): 127.0.0.1:64891
+2020-07-12 19:50:01,316 http://127.0.0.1:64891 "POST /session HTTP/1.1" 200 716
+2020-07-12 19:50:01,317 Finished Request
+2020-07-12 19:50:01,317 POST http://127.0.0.1:64891/session/6160eb25a297d29aacebc6f1beba023a/url {"url": "https://us.shein.com//Ditsy-Floral-Print-Off-Shoulder-Lettuce-Edge-Dress-p-1147588-cat-1727.html"}
+2020-07-12 19:50:05,971 http://127.0.0.1:64891 "POST /session/6160eb25a297d29aacebc6f1beba023a/url HTTP/1.1" 200 14
+2020-07-12 19:50:05,971 Finished Request
+2020-07-12 19:50:05,971 GET http://127.0.0.1:64891/session/6160eb25a297d29aacebc6f1beba023a/source {}
+2020-07-12 19:50:06,040 http://127.0.0.1:64891 "GET /session/6160eb25a297d29aacebc6f1beba023a/source HTTP/1.1" 200 1019780
+2020-07-12 19:50:06,049 Finished Request
+2020-07-12 19:50:08,050 DELETE http://127.0.0.1:64891/session/6160eb25a297d29aacebc6f1beba023a/window {}
+2020-07-12 19:50:08,117 http://127.0.0.1:64891 "DELETE /session/6160eb25a297d29aacebc6f1beba023a/window HTTP/1.1" 200 12
+2020-07-12 19:50:08,118 Finished Request
+2020-07-12 19:50:15,029 POST http://127.0.0.1:64988/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": ["--headless"]}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": ["--headless"]}}}
+2020-07-12 19:50:15,031 Starting new HTTP connection (1): 127.0.0.1:64988
+2020-07-12 19:50:17,523 http://127.0.0.1:64988 "POST /session HTTP/1.1" 200 716
+2020-07-12 19:50:17,523 Finished Request
+2020-07-12 19:50:17,523 POST http://127.0.0.1:64988/session/536e80f6a661468a55a978d3807f806b/url {"url": "https://us.shein.com//Tie-Back-Ruffle-Hem-Solid-Cami-Dress-p-1303958-cat-1727.html"}
+2020-07-12 19:50:22,946 http://127.0.0.1:64988 "POST /session/536e80f6a661468a55a978d3807f806b/url HTTP/1.1" 200 14
+2020-07-12 19:50:22,947 Finished Request
+2020-07-12 19:50:22,947 GET http://127.0.0.1:64988/session/536e80f6a661468a55a978d3807f806b/source {}
+2020-07-12 19:50:23,009 http://127.0.0.1:64988 "GET /session/536e80f6a661468a55a978d3807f806b/source HTTP/1.1" 200 1009937
+2020-07-12 19:50:23,018 Finished Request
+2020-07-12 19:50:25,019 DELETE http://127.0.0.1:64988/session/536e80f6a661468a55a978d3807f806b/window {}
+2020-07-12 19:50:25,086 http://127.0.0.1:64988 "DELETE /session/536e80f6a661468a55a978d3807f806b/window HTTP/1.1" 200 12
+2020-07-12 19:50:25,086 Finished Request
+2020-07-12 19:52:14,301 ----------- << NEW RUN 2020-07-12 19:52:14.301633 >> -----------
+2020-07-12 19:52:14,303 Starting new HTTPS connection (1): us.shein.com:443
+2020-07-12 19:52:15,626 https://us.shein.com:443 "GET / HTTP/1.1" 200 None
+2020-07-12 19:52:16,015 Starting new HTTPS connection (1): us.shein.com:443
+2020-07-12 19:52:17,379 https://us.shein.com:443 "GET /women-dresses-c-1727.html?&amp;ici=us_tab01navbar05 HTTP/1.1" 200 None
+2020-07-12 19:52:18,619 Starting new HTTPS connection (1): us.shein.com:443
+2020-07-12 19:52:20,034 https://us.shein.com:443 "GET /https://us.shein.com/women-dresses-c-1727.html?&amp;ici=us_tab01navbar05?currency=USD&min_price=0&max_price=30&page=1 HTTP/1.1" 200 None
+2020-07-12 19:52:21,948 POST http://127.0.0.1:65100/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": ["--headless"]}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": ["--headless"]}}}
+2020-07-12 19:52:21,949 Starting new HTTP connection (1): 127.0.0.1:65100
+2020-07-12 19:52:24,419 http://127.0.0.1:65100 "POST /session HTTP/1.1" 200 717
+2020-07-12 19:52:24,419 Finished Request
+2020-07-12 19:52:24,419 POST http://127.0.0.1:65100/session/5d57d2baf71ad1b7eb5408c8aa576063/url {"url": "https://us.shein.com//Tie-Front-Ruffle-Trim-Ditsy-Floral-Milkmaid-Dress-p-1227015-cat-1727.html"}
+2020-07-12 19:52:29,778 http://127.0.0.1:65100 "POST /session/5d57d2baf71ad1b7eb5408c8aa576063/url HTTP/1.1" 200 14
+2020-07-12 19:52:29,779 Finished Request
+2020-07-12 19:52:29,779 GET http://127.0.0.1:65100/session/5d57d2baf71ad1b7eb5408c8aa576063/source {}
+2020-07-12 19:52:29,848 http://127.0.0.1:65100 "GET /session/5d57d2baf71ad1b7eb5408c8aa576063/source HTTP/1.1" 200 1068486
+2020-07-12 19:52:29,858 Finished Request
+2020-07-12 19:52:31,859 DELETE http://127.0.0.1:65100/session/5d57d2baf71ad1b7eb5408c8aa576063/window {}
+2020-07-12 19:52:31,927 http://127.0.0.1:65100 "DELETE /session/5d57d2baf71ad1b7eb5408c8aa576063/window HTTP/1.1" 200 12
+2020-07-12 19:52:31,927 Finished Request
+2020-07-12 19:52:32,807 POST http://127.0.0.1:65202/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": ["--headless"]}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": ["--headless"]}}}
+2020-07-12 19:52:32,808 Starting new HTTP connection (1): 127.0.0.1:65202
+2020-07-12 19:52:35,286 http://127.0.0.1:65202 "POST /session HTTP/1.1" 200 716
+2020-07-12 19:52:35,286 Finished Request
+2020-07-12 19:52:35,286 POST http://127.0.0.1:65202/session/154dd9988ec56608eb23f4c1a4987026/url {"url": "https://us.shein.com//Ditsy-Floral-Ruched-Mini-Dress-p-1113618-cat-1727.html"}
+2020-07-12 19:52:40,197 http://127.0.0.1:65202 "POST /session/154dd9988ec56608eb23f4c1a4987026/url HTTP/1.1" 200 14
+2020-07-12 19:52:40,197 Finished Request
+2020-07-12 19:52:40,197 GET http://127.0.0.1:65202/session/154dd9988ec56608eb23f4c1a4987026/source {}
+2020-07-12 19:52:40,258 http://127.0.0.1:65202 "GET /session/154dd9988ec56608eb23f4c1a4987026/source HTTP/1.1" 200 1004007
+2020-07-12 19:52:40,266 Finished Request
+2020-07-12 19:52:42,267 DELETE http://127.0.0.1:65202/session/154dd9988ec56608eb23f4c1a4987026/window {}
+2020-07-12 19:52:42,345 http://127.0.0.1:65202 "DELETE /session/154dd9988ec56608eb23f4c1a4987026/window HTTP/1.1" 200 12
+2020-07-12 19:52:42,345 Finished Request
+2020-07-12 19:54:14,117 ----------- << NEW RUN 2020-07-12 19:54:14.117336 >> -----------
+2020-07-12 19:54:14,119 Starting new HTTPS connection (1): us.shein.com:443
+2020-07-12 19:54:15,575 https://us.shein.com:443 "GET / HTTP/1.1" 200 None
+2020-07-12 19:54:15,952 Starting new HTTPS connection (1): us.shein.com:443
+2020-07-12 19:54:17,542 https://us.shein.com:443 "GET /women-dresses-c-1727.html?&amp;ici=us_tab01navbar05 HTTP/1.1" 200 None
+2020-07-12 19:54:18,724 Starting new HTTPS connection (1): us.shein.com:443
+2020-07-12 19:54:20,951 https://us.shein.com:443 "GET /https://us.shein.com/women-dresses-c-1727.html?&amp;ici=us_tab01navbar05?currency=USD&min_price=0&max_price=30&page=1 HTTP/1.1" 200 None
+2020-07-12 19:54:22,782 POST http://127.0.0.1:65303/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": ["--headless"]}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": ["--headless"]}}}
+2020-07-12 19:54:22,784 Starting new HTTP connection (1): 127.0.0.1:65303
+2020-07-12 19:54:25,247 http://127.0.0.1:65303 "POST /session HTTP/1.1" 200 716
+2020-07-12 19:54:25,248 Finished Request
+2020-07-12 19:54:25,248 POST http://127.0.0.1:65303/session/62c79a75758edcecb33fa6dbe8584721/url {"url": "https://us.shein.com//Frill-Detail-Ruched-Bust-Dress-p-1237410-cat-1727.html"}
+2020-07-12 19:54:30,933 http://127.0.0.1:65303 "POST /session/62c79a75758edcecb33fa6dbe8584721/url HTTP/1.1" 200 14
+2020-07-12 19:54:30,933 Finished Request
+2020-07-12 19:54:30,933 GET http://127.0.0.1:65303/session/62c79a75758edcecb33fa6dbe8584721/source {}
+2020-07-12 19:54:31,006 http://127.0.0.1:65303 "GET /session/62c79a75758edcecb33fa6dbe8584721/source HTTP/1.1" 200 1131791
+2020-07-12 19:54:31,016 Finished Request
+2020-07-12 19:54:33,017 DELETE http://127.0.0.1:65303/session/62c79a75758edcecb33fa6dbe8584721/window {}
+2020-07-12 19:54:33,093 http://127.0.0.1:65303 "DELETE /session/62c79a75758edcecb33fa6dbe8584721/window HTTP/1.1" 200 12
+2020-07-12 19:54:33,094 Finished Request
+2020-07-12 19:54:33,929 POST http://127.0.0.1:65408/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": ["--headless"]}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": ["--headless"]}}}
+2020-07-12 19:54:33,929 Starting new HTTP connection (1): 127.0.0.1:65408
+2020-07-12 19:54:36,404 http://127.0.0.1:65408 "POST /session HTTP/1.1" 200 716
+2020-07-12 19:54:36,404 Finished Request
+2020-07-12 19:54:36,404 POST http://127.0.0.1:65408/session/80d2df5c5be7e160112daee97fc05472/url {"url": "https://us.shein.com//Solid-Drawstring-Side-Fitted-Dress-p-1174243-cat-1727.html"}
+2020-07-12 19:54:41,353 http://127.0.0.1:65408 "POST /session/80d2df5c5be7e160112daee97fc05472/url HTTP/1.1" 200 14
+2020-07-12 19:54:41,353 Finished Request
+2020-07-12 19:54:41,353 GET http://127.0.0.1:65408/session/80d2df5c5be7e160112daee97fc05472/source {}
+2020-07-12 19:54:41,417 http://127.0.0.1:65408 "GET /session/80d2df5c5be7e160112daee97fc05472/source HTTP/1.1" 200 1032043
+2020-07-12 19:54:41,426 Finished Request
+2020-07-12 19:54:43,427 DELETE http://127.0.0.1:65408/session/80d2df5c5be7e160112daee97fc05472/window {}
+2020-07-12 19:54:43,493 http://127.0.0.1:65408 "DELETE /session/80d2df5c5be7e160112daee97fc05472/window HTTP/1.1" 200 12
+2020-07-12 19:54:43,494 Finished Request
+2020-07-12 19:55:25,948 ----------- << NEW RUN 2020-07-12 19:55:25.948386 >> -----------
+2020-07-12 19:55:25,950 Starting new HTTPS connection (1): us.shein.com:443
+2020-07-12 19:55:27,425 https://us.shein.com:443 "GET / HTTP/1.1" 200 None
+2020-07-12 19:55:27,796 Starting new HTTPS connection (1): us.shein.com:443
+2020-07-12 19:55:29,184 https://us.shein.com:443 "GET /Tops-c-1766.html?&amp;ici=us_tab01navbar06 HTTP/1.1" 200 None
+2020-07-12 19:55:30,403 Starting new HTTPS connection (1): us.shein.com:443
+2020-07-12 19:55:32,042 https://us.shein.com:443 "GET /https://us.shein.com/Tops-c-1766.html?&amp;ici=us_tab01navbar06?currency=USD&min_price=0&max_price=30&page=1 HTTP/1.1" 200 None
+2020-07-12 19:55:33,960 POST http://127.0.0.1:65513/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": ["--headless"]}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": ["--headless"]}}}
+2020-07-12 19:55:33,962 Starting new HTTP connection (1): 127.0.0.1:65513
+2020-07-12 19:55:36,468 http://127.0.0.1:65513 "POST /session HTTP/1.1" 200 716
+2020-07-12 19:55:36,469 Finished Request
+2020-07-12 19:55:36,469 POST http://127.0.0.1:65513/session/48b4166b767eec3cc1029bab9ff699d9/url {"url": "https://us.shein.com//Neon-Pink-One-Shoulder-Rib-knit-Crop-Top-p-710005-cat-2223.html"}
+2020-07-12 19:55:42,098 http://127.0.0.1:65513 "POST /session/48b4166b767eec3cc1029bab9ff699d9/url HTTP/1.1" 200 14
+2020-07-12 19:55:42,098 Finished Request
+2020-07-12 19:55:42,098 GET http://127.0.0.1:65513/session/48b4166b767eec3cc1029bab9ff699d9/source {}
+2020-07-12 19:55:42,179 http://127.0.0.1:65513 "GET /session/48b4166b767eec3cc1029bab9ff699d9/source HTTP/1.1" 200 1252034
+2020-07-12 19:55:42,191 Finished Request
+2020-07-12 19:55:44,191 DELETE http://127.0.0.1:65513/session/48b4166b767eec3cc1029bab9ff699d9/window {}
+2020-07-12 19:55:44,259 http://127.0.0.1:65513 "DELETE /session/48b4166b767eec3cc1029bab9ff699d9/window HTTP/1.1" 200 12
+2020-07-12 19:55:44,259 Finished Request
+2020-07-12 19:55:45,119 POST http://127.0.0.1:49232/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": ["--headless"]}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": ["--headless"]}}}
+2020-07-12 19:55:45,120 Starting new HTTP connection (1): 127.0.0.1:49232
+2020-07-12 19:55:47,589 http://127.0.0.1:49232 "POST /session HTTP/1.1" 200 716
+2020-07-12 19:55:47,589 Finished Request
+2020-07-12 19:55:47,589 POST http://127.0.0.1:49232/session/184911907dd7c9b1c6320803b1121b99/url {"url": "https://us.shein.com//Drop-Shoulder-Letter-Graphic-Tee-p-1160919-cat-1738.html"}
+2020-07-12 19:55:53,081 http://127.0.0.1:49232 "POST /session/184911907dd7c9b1c6320803b1121b99/url HTTP/1.1" 200 14
+2020-07-12 19:55:53,081 Finished Request
+2020-07-12 19:55:53,082 GET http://127.0.0.1:49232/session/184911907dd7c9b1c6320803b1121b99/source {}
+2020-07-12 19:55:53,150 http://127.0.0.1:49232 "GET /session/184911907dd7c9b1c6320803b1121b99/source HTTP/1.1" 200 1071670
+2020-07-12 19:55:53,166 Finished Request
+2020-07-12 19:55:55,166 DELETE http://127.0.0.1:49232/session/184911907dd7c9b1c6320803b1121b99/window {}
+2020-07-12 19:55:55,248 http://127.0.0.1:49232 "DELETE /session/184911907dd7c9b1c6320803b1121b99/window HTTP/1.1" 200 12
+2020-07-12 19:55:55,248 Finished Request
+2020-07-12 19:56:51,884 ----------- << NEW RUN 2020-07-12 19:56:51.884904 >> -----------
+2020-07-12 19:56:51,886 Starting new HTTPS connection (1): us.shein.com:443
+2020-07-12 19:56:53,288 https://us.shein.com:443 "GET / HTTP/1.1" 200 None
+2020-07-12 19:56:53,660 Starting new HTTPS connection (1): us.shein.com:443
+2020-07-12 19:56:54,803 https://us.shein.com:443 "GET /Beachwear-c-2039.html?&amp;ici=us_tab01navbar07 HTTP/1.1" 200 None
+2020-07-12 19:56:56,010 Starting new HTTPS connection (1): us.shein.com:443
+2020-07-12 19:56:57,673 https://us.shein.com:443 "GET /https://us.shein.com/Beachwear-c-2039.html?&amp;ici=us_tab01navbar07?currency=USD&min_price=0&max_price=50&page=1 HTTP/1.1" 200 None
+2020-07-12 19:56:59,810 POST http://127.0.0.1:49342/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": ["--headless"]}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": ["--headless"]}}}
+2020-07-12 19:56:59,811 Starting new HTTP connection (1): 127.0.0.1:49342
+2020-07-12 19:57:02,301 http://127.0.0.1:49342 "POST /session HTTP/1.1" 200 716
+2020-07-12 19:57:02,301 Finished Request
+2020-07-12 19:57:02,301 POST http://127.0.0.1:49342/session/44fe2cc77aadcd75aab1e8c6be36ce00/url {"url": "https://us.shein.com//Rib-Underwire-High-Cut-Bikini-Swimsuit-p-1246946-cat-1866.html"}
+2020-07-12 19:57:07,890 http://127.0.0.1:49342 "POST /session/44fe2cc77aadcd75aab1e8c6be36ce00/url HTTP/1.1" 200 14
+2020-07-12 19:57:07,890 Finished Request
+2020-07-12 19:57:07,890 GET http://127.0.0.1:49342/session/44fe2cc77aadcd75aab1e8c6be36ce00/source {}
+2020-07-12 19:57:07,980 http://127.0.0.1:49342 "GET /session/44fe2cc77aadcd75aab1e8c6be36ce00/source HTTP/1.1" 200 1160698
+2020-07-12 19:57:07,995 Finished Request
+2020-07-12 19:57:09,996 DELETE http://127.0.0.1:49342/session/44fe2cc77aadcd75aab1e8c6be36ce00/window {}
+2020-07-12 19:57:10,064 http://127.0.0.1:49342 "DELETE /session/44fe2cc77aadcd75aab1e8c6be36ce00/window HTTP/1.1" 200 12
+2020-07-12 19:57:10,064 Finished Request
+2020-07-12 19:57:10,924 POST http://127.0.0.1:49713/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": ["--headless"]}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": ["--headless"]}}}
+2020-07-12 19:57:10,925 Starting new HTTP connection (1): 127.0.0.1:49713
+2020-07-12 19:57:13,422 http://127.0.0.1:49713 "POST /session HTTP/1.1" 200 716
+2020-07-12 19:57:13,422 Finished Request
+2020-07-12 19:57:13,422 POST http://127.0.0.1:49713/session/374d1cc0c4821e9e3d418f28c492d28a/url {"url": "https://us.shein.com//Butterfly-Print-Triangle-Tie-Side-Bikini-Swimsuit-p-1330837-cat-1866.html"}
+2020-07-12 19:57:18,880 http://127.0.0.1:49713 "POST /session/374d1cc0c4821e9e3d418f28c492d28a/url HTTP/1.1" 200 14
+2020-07-12 19:57:18,881 Finished Request
+2020-07-12 19:57:18,881 GET http://127.0.0.1:49713/session/374d1cc0c4821e9e3d418f28c492d28a/source {}
+2020-07-12 19:57:18,944 http://127.0.0.1:49713 "GET /session/374d1cc0c4821e9e3d418f28c492d28a/source HTTP/1.1" 200 1042821
+2020-07-12 19:57:18,956 Finished Request
+2020-07-12 19:57:20,958 DELETE http://127.0.0.1:49713/session/374d1cc0c4821e9e3d418f28c492d28a/window {}
+2020-07-12 19:57:21,059 http://127.0.0.1:49713 "DELETE /session/374d1cc0c4821e9e3d418f28c492d28a/window HTTP/1.1" 200 12
+2020-07-12 19:57:21,059 Finished Request
