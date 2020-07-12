@@ -1,6 +1,19 @@
+"""
+# ITC_project #
+web scrapping
+In this project we retrieve data from the website: https://us.shein.com.
+Because the website contains thousands of products, we decide to focus on dresses, tops and swimwear.
+For each product we gather data as: price, color, rating, style, etc...
+For doing so, we used selenium and beautifulsoup packages and wrote the script in python.
+In this web scrapping YOU can decide which products to scrap, how many products, color and max price.
+
+Authors: Limor Nunu, Dana Makov
+"""
 from shein import web_scrap
-import configuration as cfg
+from configuration import *
 import click
+import logging
+import datetime
 
 
 @click.command()
@@ -25,36 +38,49 @@ def cli(product, number, price, color):
     This program retrieves products information from the http://us.shein.com website.
     You can decide which products to scrap, how many products, color and max price.
     """
+    logging.basicConfig(format='%(asctime)s %(message)s',
+                        filename='logging.log', filemode='a')
+    logger = logging.getLogger()
+    logger.setLevel(logging.NOTSET)
+    logger.info(f"----------- << NEW RUN {datetime.datetime.now()} >> -----------")
+
+    # setting the product type
     try:
-        if set(product).intersection(cfg.PRODUCT_SCRAP_OPT) == set(product):
+        if set(product).intersection(PRODUCT_SCRAP_OPT) == set(product):
             prod_to_scrap = product
         else:
             raise ValueError
     except ValueError:
+        logger.warning(f"There is a problem with user's input: product type '{product}'")
         print("You entered invalid value for the product type.\n"
-              "please type one or more values from the list: ['t', 'a', 'd', 's']\n"
+              "please type one or more values from the list: ['t', 'd', 's']\n"
               "make sure you put -p before each one of the product type.")
 
+    # setting the number of products to scrap
     try:
-        if 0 < int(number) < cfg.SCRAP_LIMIT:
+        if 0 < int(number) < SCRAP_LIMIT:
             n_to_scrap = int(number)
         else:
             raise ValueError
     except ValueError:
+        logger.warning(f"There is a problem with user's input: number of products - '{number}'")
         print("You entered invalid value for the number of products to scrap.\n"
-              "please type positive integer less than {}".format(cfg.SCRAP_LIMIT))
+              "please type positive integer less than {}".format(SCRAP_LIMIT))
 
+    # setting the color of product
     try:
-        if str(color).capitalize() in cfg.COLOR_SCRAP_OPT:
+        if str(color).capitalize() in COLOR_SCRAP_OPT:
             sort_color = str(color).capitalize()
         elif color is not None:
             raise ValueError
     except ValueError:
+        logger.warning(f"There is a problem with user's input: color - '{color}'")
         print("You entered invalid value for the color.\n"
-              "please type color from the list: {}".format(cfg.COLOR_SCRAP_OPT))
+              "please type color from the list: {}".format(COLOR_SCRAP_OPT))
     else:
         sort_color = None
 
+    # setting the max price of products
     try:
         if int(price) > 0:
             sort_max_price = int(price)
@@ -63,9 +89,12 @@ def cli(product, number, price, color):
     except ValueError:
         print("You entered invalid value for the max price.\n"
               "please type positive integer")
+        logger.warning(f"There is a problem with user's input: max price - '{price}'")
 
-    web_scrap(cfg.SECTION_DICT[prod_to_scrap], n_to_scrap, sort_max_price, sort_color)
+    # call the web_scrap function with all the user's choices
+    web_scrap(SECTION_DICT[prod_to_scrap], n_to_scrap, sort_max_price, sort_color)
 
 
 if __name__ == '__main__':
+    """ call the above function """
     cli()
