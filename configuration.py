@@ -11,6 +11,13 @@ COLOR_SCRAP_OPT = ['Blue', 'Pink', 'Green', 'Red', 'Multi', 'Purple', 'Brown', '
 SECTION_DICT = {'t': 'TOPS', 'd': 'DRESSES', 's': 'SWIMWEAR'}
 
 
+# exchange_api constants:
+BASE_EX_RATE = 'USD' #from which coin do the exchange
+SYMBOL_EX_RATE = 'ILS' #to which coin do the exchange
+GET_RATE_JASON_EX = 'rates'
+GET_DATE_JASON_EX = 'date'
+
+
 # shein constants:
 URL = "https://us.shein.com/"
 NUMBER_OF_PAGES = 2  # The maximum number of pages in the website, you can change this number to lower number.
@@ -25,10 +32,10 @@ PROD_COLOR_SPAN = "span"
 PROD_COLOR_CLASS = "class"
 PROD_COLOR_CLASS_NAME = "attr-item-pic j-attr-item"
 PROD_COLOR_SPLIT_SIGN = '>'
-HERF = 'href="'
+HREF = 'href="'
 STRIP_SIGN = '"'
 LOOP_COLOR_NUM = 0
-URL_CHOISE_PRICE = '?currency=USD&min_price={}&max_price={}'
+URL_CHOICE_PRICE = '?currency=USD&min_price={}&max_price={}'
 
 
 # product_info constants:
@@ -51,6 +58,8 @@ ID = "ID"
 CLASS_ID = "product-intro__head-sku"
 ID_SPLIT_NUM = 1
 PRICE = "price"
+PRICE_EXCHANGE ='Price_ILS'
+DATE_EXCHANGE ='Date_exchange_rate'
 CLASS_PRICE = "product-intro__head-price"
 PRICE_SPLIT_NUM = 1
 PRICE_SPLIT_SIGN = "$"
@@ -92,25 +101,28 @@ COL_P_REVIEWS_AMOUNT = 'reviews_amount'
 COL_P_SMALL = 'Small'
 COL_P_TRUE_TO_SIZE = 'True to Size'
 COL_P_LARGE = 'Large'
+COL_P_STYLE = 'Style'
+COL_P_COLOR = 'Color'
+COL_P_PATTERN_TYPE = 'Pattern Type'
+COL_P_NECKLINE = 'Neckline'
+COL_P_COMPOSITION = 'Composition'
+COL_P_MATERIAL = 'Material'
+COL_P_FABRIC = 'Fabric'
+COL_P_DATE_EXCHANGE = 'Date_exchange_rate'
+COL_P_PRICE_EXCHANGE = 'Price_ILS'
 PRODUCT_COL_LIST = [COL_P_WEB_ID, COL_P_PRODUCT_TYPE, COL_P_PRICE, COL_P_AVERAGE_RATING, COL_P_REVIEWS_AMOUNT,
-                    COL_P_SMALL, COL_P_TRUE_TO_SIZE, COL_P_LARGE]
+                    COL_P_SMALL, COL_P_TRUE_TO_SIZE, COL_P_LARGE, COL_P_STYLE, COL_P_COLOR, COL_P_PATTERN_TYPE,
+                    COL_P_NECKLINE, COL_P_COMPOSITION, COL_P_MATERIAL, COL_P_FABRIC, COL_P_DATE_EXCHANGE,
+                    COL_P_PRICE_EXCHANGE]
 
 
 ## dresses table
 COL_D_WEB_ID = 'ID'
-COL_D_PRODUCT_TYPE = 'Product_type'
-COL_D_STYLE = 'Style'
-COL_D_COLOR = 'Color'
-COL_D_PATTERN_TYPE = 'Pattern Type'
-COL_D_NECKLINE = 'Neckline'
 COL_D_DRESS_LENGTH = 'Dresses Length'
 COL_D_TYPE = 'Type'
 COL_D_DETAILS = 'Details'
 COL_D_SLEEVE_LENGTH = 'Sleeve Length'
 COL_D_SEASON = 'Season'
-COL_D_COMPOSITION = 'Composition'
-COL_D_MATERIAL = 'Material'
-COL_D_FABRIC = 'Fabric'
 COL_D_WAIST_LINE = 'Waist Line'
 COL_D_SHEER = 'Sheer'
 COL_D_HEM_SHAPED = 'Hem Shaped'
@@ -118,51 +130,31 @@ COL_D_FIT_TYPE = 'Fit Type'
 COL_D_BELT = 'Belt'
 COL_D_SLEEVE_TYPE = 'Sleeve Type'
 COL_D_LINING = 'Lining'
-DRESSES_COL_LIST = [COL_D_WEB_ID, COL_D_PRODUCT_TYPE, COL_D_STYLE, COL_D_COLOR, COL_D_PATTERN_TYPE, COL_D_NECKLINE,
-                    COL_D_DRESS_LENGTH, COL_D_TYPE, COL_D_DETAILS, COL_D_SLEEVE_LENGTH, COL_D_SEASON, COL_D_COMPOSITION,
-                    COL_D_MATERIAL, COL_D_FABRIC, COL_D_WAIST_LINE, COL_D_SHEER, COL_D_HEM_SHAPED, COL_D_FIT_TYPE,
-                    COL_D_BELT, COL_D_SLEEVE_TYPE, COL_D_LINING]
+DRESSES_COL_LIST = [COL_D_WEB_ID, COL_D_DRESS_LENGTH, COL_D_TYPE, COL_D_DETAILS, COL_D_SLEEVE_LENGTH, COL_D_SEASON,
+                    COL_D_WAIST_LINE, COL_D_SHEER, COL_D_HEM_SHAPED, COL_D_FIT_TYPE, COL_D_BELT, COL_D_SLEEVE_TYPE,
+                    COL_D_LINING]
 
 ## T-shirts/tops table
 COL_T_WEB_ID = 'ID'
-COL_T_PRODUCT_TYPE = 'Product_type'
-COL_T_STYLE = 'Style'
-COL_T_COLOR = 'Color'
-COL_T_PATTERN_TYPE = 'Pattern Type'
-COL_T_NECKLINE = 'Neckline'
 COL_T_LENGTH = 'Length'
 COL_T_TYPE = 'Type'
 COL_T_DETAILS = 'Details'
 COL_T_SEASON = 'Season'
-COL_T_COMPOSITION = 'Composition'
-COL_T_MATERIAL = 'Material'
-COL_T_FABRIC = 'Fabric'
 COL_T_SHEER = 'Sheer'
 COL_T_FIT_TYPE = 'Fit Type'
 COL_T_SLEEVE_LENGTH = 'Sleeve Length'
 COL_T_SLEEVE_TYPE = 'Sleeve Type'
 COL_T_PLACKET_TYPE = 'Placket Type'
 COL_T_ARABIAN_CLOTHING = 'Arabian Clothing'
-TSHIRTS_COL_LIST = [COL_T_WEB_ID, COL_T_PRODUCT_TYPE, COL_T_STYLE, COL_T_COLOR, COL_T_PATTERN_TYPE, COL_T_NECKLINE,
-                    COL_T_LENGTH, COL_T_TYPE, COL_T_DETAILS, COL_T_SEASON, COL_T_COMPOSITION, COL_T_MATERIAL,
-                    COL_T_FABRIC, COL_T_SHEER, COL_T_FIT_TYPE, COL_T_SLEEVE_LENGTH, COL_T_SLEEVE_TYPE,
-                    COL_T_PLACKET_TYPE, COL_T_ARABIAN_CLOTHING]
+TSHIRTS_COL_LIST = [COL_T_WEB_ID, COL_T_LENGTH, COL_T_TYPE, COL_T_DETAILS, COL_T_SEASON, COL_T_SHEER, COL_T_FIT_TYPE,
+                    COL_T_SLEEVE_LENGTH, COL_T_SLEEVE_TYPE, COL_T_PLACKET_TYPE, COL_T_ARABIAN_CLOTHING]
 
 ## swimwear table
 COL_S_WEB_ID = 'ID'
-COL_S_PRODUCT_TYPE = 'Product_type'
-COL_S_STYLE = 'Style'
-COL_S_COLOR = 'Color'
-COL_S_PATTERN_TYPE = 'Pattern Type'
-COL_S_NECKLINE = 'Neckline'
 COL_S_DETAILS = 'Details'
-COL_S_COMPOSITION = 'Composition'
-COL_S_MATERIAL = 'Material'
-COL_S_FABRIC = 'Fabric'
 COL_S_BRA_TYPE = 'Bra Type'
 COL_S_BOTTOM_TYPE = 'Bottom Type'
 COL_S_LINING = 'Lining'
 COL_S_CHEST_PAD = 'Chest pad'
-SWIMWEAR_COL_LIST = [COL_S_WEB_ID, COL_S_PRODUCT_TYPE, COL_S_STYLE, COL_S_COLOR, COL_S_PATTERN_TYPE, COL_S_NECKLINE,
-                     COL_S_DETAILS, COL_S_COMPOSITION, COL_S_MATERIAL, COL_S_FABRIC, COL_S_BRA_TYPE, COL_S_BOTTOM_TYPE,
+SWIMWEAR_COL_LIST = [COL_S_WEB_ID, COL_S_DETAILS, COL_S_BRA_TYPE, COL_S_BOTTOM_TYPE,
                      COL_S_LINING, COL_S_CHEST_PAD]
