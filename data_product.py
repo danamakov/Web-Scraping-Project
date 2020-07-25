@@ -111,4 +111,5 @@ def product_info(url_choice, num_of_products, section):
             pass
 
     # inserting into the database
-    sql_insert(products_list, section)
+    return products_list, section
+    # sql_insert(products_list, section)

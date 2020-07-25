@@ -46,4 +46,5 @@ def web_scrap(SECTION, number, PRICE, COLOR=None):
     else:
         url_choice = URL + products_url_page + URL_CHOISE_PRICE.format(str(LOW_PRICE), str(PRICE))
 
-    product_info(url_choice, number, SECTION)
+    return url_choice, number, SECTION
+    # product_info(url_choice, number, SECTION)

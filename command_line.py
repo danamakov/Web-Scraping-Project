@@ -9,7 +9,6 @@ In this web scrapping YOU can decide which products to scrap, how many products,
 
 Authors: Limor Nunu, Dana Makov
 """
-from shein import web_scrap
 from configuration import *
 import click
 import logging
@@ -91,10 +90,10 @@ def cli(product, number, price, color):
               "please type positive integer")
         logger.warning(f"There is a problem with user's input: max price - '{price}'")
 
+
+
+    section, num, price, color = SECTION_DICT[prod_to_scrap], n_to_scrap, sort_max_price, sort_color
+    return cli
+
     # call the web_scrap function with all the user's choices
-    web_scrap(SECTION_DICT[prod_to_scrap], n_to_scrap, sort_max_price, sort_color)
-
-
-if __name__ == '__main__':
-    """ call the above function """
-    cli()
+    # web_scrap(SECTION_DICT[prod_to_scrap], n_to_scrap, sort_max_price, sort_color)

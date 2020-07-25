@@ -22,7 +22,9 @@ with contextlib.closing(sqlite3.connect(DB_FILENAME)) as con:  # auto-closes
                     Reviews_amount INTEGER,
                     Small INTEGER,
                     True_to_Size INTEGER,
-                    Large INTEGER)""")
+                    Large INTEGER,
+                    UNIQUE (Web_ID) ON CONFLICT IGNORE)""")
+        cur.execute('CREATE INDEX i on products(Web_ID)')
 
         cur.execute("""CREATE TABLE dresses(
                     Web_ID TEXT PK,
@@ -46,7 +48,8 @@ with contextlib.closing(sqlite3.connect(DB_FILENAME)) as con:  # auto-closes
                     Belt TEXT,
                     Sleeve_Type TEXT,
                     Lining TEXT,    
-                    FOREIGN KEY (Web_ID) REFERENCES products(Web_ID))""")
+                    FOREIGN KEY (Web_ID) REFERENCES products(Web_ID),
+                    UNIQUE (Web_ID) ON CONFLICT IGNORE)""")
 
         cur.execute("""CREATE TABLE t_shirts(
                     Web_ID TEXT PK,
@@ -68,7 +71,8 @@ with contextlib.closing(sqlite3.connect(DB_FILENAME)) as con:  # auto-closes
                     Sleeve_Type TEXT,
                     Placket_Type TEXT,
                     Arabian_Clothing TEXT,
-                    FOREIGN KEY (Web_ID) REFERENCES products(Web_ID))""")
+                    FOREIGN KEY (Web_ID) REFERENCES products(Web_ID),
+                    UNIQUE (Web_ID) ON CONFLICT IGNORE)""")
 
         cur.execute("""CREATE TABLE swimwear(
                     Web_ID TEXT PK,
@@ -85,4 +89,5 @@ with contextlib.closing(sqlite3.connect(DB_FILENAME)) as con:  # auto-closes
                     Bottom_Type TEXT,
                     Lining TEXT,
                     Chest_pad TEXT,
-                    FOREIGN KEY (Web_ID) REFERENCES products(Web_ID))""")
+                    FOREIGN KEY (Web_ID) REFERENCES products(Web_ID),
+                    UNIQUE (Web_ID) ON CONFLICT IGNORE)""")
