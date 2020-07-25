@@ -4,7 +4,9 @@ from configuration import *
 import requests
 from tqdm import tqdm
 import logging
-from sql_insert_products import sql_insert
+from exchange_api import exchange_rate, date_exchange_rate
+#from sql_insert_products import sql_insert
+
 
 
 def soup_find(soup, s_type, class_name):
@@ -57,7 +59,14 @@ def get_data(url, section):
     for item in find_all(soup, CLASS_DESCRIPTION):
         prod_dict[item.text.split(DESC_SPLIT_TYPE)[DESC_FIRST_SPLIT_NUM].strip()] = \
             item.text.split(DESC_SPLIT_TYPE)[DESC_SEC_SPLIT_NUM].strip()
+
+    # adding the price and date from the exchange_api file
+    prod_dict[PRICE_EXCHANGE] = exchange_rate
+    prod_dict[DATE_EXCHANGE] = date_exchange_rate
+
+    #adding product_type by the section:
     prod_dict['Product_type'] = section
+
     return prod_dict
 
 

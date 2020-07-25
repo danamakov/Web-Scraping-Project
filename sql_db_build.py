@@ -23,24 +23,25 @@ with contextlib.closing(sqlite3.connect(DB_FILENAME)) as con:  # auto-closes
                     Small INTEGER,
                     True_to_Size INTEGER,
                     Large INTEGER,
+                    Style TEXT,
+	                Color TEXT,
+	                Pattern_Type TEXT,
+	                Neckline TEXT,
+                    Composition TEXT,
+                    Material TEXT,
+                    Fabric TEXT,
+                    Price_ILS REAL,
+                    Date_exchange_rate TEXT,
                     UNIQUE (Web_ID) ON CONFLICT IGNORE)""")
         cur.execute('CREATE INDEX i on products(Web_ID)')
 
         cur.execute("""CREATE TABLE dresses(
                     Web_ID TEXT PK,
-                    Product_type TEXT,
-                    Style TEXT,
-                    Color TEXT,
-                    Pattern_Type TEXT,
-                    Neckline TEXT,
                     Dresses_Length TEXT,
                     Type TEXT,
                     Details TEXT,
                     Sleeve_Length TEXT,
                     Season TEXT,
-                    Composition TEXT,
-                    Material TEXT,
-                    Fabric TEXT,
                     Waist_Line TEXT,
                     Sheer TEXT,
                     Hem_Shaped TEXT,
@@ -53,18 +54,10 @@ with contextlib.closing(sqlite3.connect(DB_FILENAME)) as con:  # auto-closes
 
         cur.execute("""CREATE TABLE t_shirts(
                     Web_ID TEXT PK,
-                    Product_type TEXT,
-                    Style TEXT,
-                    Color TEXT,
-                    Pattern_Type TEXT,
-                    Neckline TEXT,
                     Length TEXT,
                     Type TEXT,
                     Details TEXT,
                     Season TEXT,
-                    Composition TEXT,
-                    Material TEXT,
-                    Fabric TEXT,
                     Sheer TEXT,
                     Fit_Type TEXT,
                     Sleeve_Length TEXT,
@@ -76,14 +69,6 @@ with contextlib.closing(sqlite3.connect(DB_FILENAME)) as con:  # auto-closes
 
         cur.execute("""CREATE TABLE swimwear(
                     Web_ID TEXT PK,
-                    Product_type TEXT,
-                    Style TEXT,
-                    Color TEXT,
-                    Pattern_Type TEXT,
-                    Neckline TEXT,
-                    Composition TEXT,
-                    Material TEXT,
-                    Fabric TEXT,
                     Bra TEXT,
                     Type TEXT,
                     Bottom_Type TEXT,
@@ -91,3 +76,14 @@ with contextlib.closing(sqlite3.connect(DB_FILENAME)) as con:  # auto-closes
                     Chest_pad TEXT,
                     FOREIGN KEY (Web_ID) REFERENCES products(Web_ID),
                     UNIQUE (Web_ID) ON CONFLICT IGNORE)""")
+
+# common in t-shirts and dresses
+# Type TEXT,
+# Details TEXT,
+# Season TEXT,
+# Sleeve_Length TEXT,
+# Sheer TEXT,
+# Fit_Type TEXT,
+# Sleeve_Type TEXT,
+
+#we need to adjust them in sql_insert_product, configuration (product_col_list etc)

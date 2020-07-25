@@ -33,18 +33,18 @@ def web_scrap(SECTION, number, PRICE, COLOR=None):
                                        {PROD_COLOR_CLASS: PROD_COLOR_CLASS_NAME})
                          ).split(PROD_COLOR_SPLIT_SIGN)
         all_url = []
-        for y in [x.split() for x in prod_color if HERF in x]:
-            all_url.append(URL + " ".join([x.split(HERF) for x in y if HERF in x]
+        for y in [x.split() for x in prod_color if HREF in x]:
+            all_url.append(URL + " ".join([x.split(HREF) for x in y if HREF in x]
                                               [LOOP_COLOR_NUM]).strip().strip(STRIP_SIGN))
 
         # create dict of colors and the url by color
         color_dict = dict(zip(COLORS_LIST, all_url))
 
         # create the url by the price range
-        url_choice = color_dict[COLOR] + URL_CHOISE_PRICE.format(str(LOW_PRICE), str(PRICE))
+        url_choice = color_dict[COLOR] + URL_CHOICE_PRICE.format(str(LOW_PRICE), str(PRICE))
 
     else:
-        url_choice = URL + products_url_page + URL_CHOISE_PRICE.format(str(LOW_PRICE), str(PRICE))
+        url_choice = URL + products_url_page + URL_CHOICE_PRICE.format(str(LOW_PRICE), str(PRICE))
 
     return url_choice, number, SECTION
     # product_info(url_choice, number, SECTION)
