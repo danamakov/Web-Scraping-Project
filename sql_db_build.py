@@ -7,7 +7,6 @@ import os
 import contextlib
 from configuration import *
 
-
 if os.path.exists(DB_FILENAME):
     os.remove(DB_FILENAME)
 
@@ -24,12 +23,13 @@ with contextlib.closing(sqlite3.connect(DB_FILENAME)) as con:  # auto-closes
                     True_to_Size INTEGER,
                     Large INTEGER,
                     Style TEXT,
-	                Color TEXT,
-	                Pattern_Type TEXT,
-	                Neckline TEXT,
+                    Color TEXT,
+                    Pattern_Type TEXT,
+                    Neckline TEXT,
                     Composition TEXT,
                     Material TEXT,
                     Fabric TEXT,
+                    Details TEXT,
                     Price_ILS REAL,
                     Date_exchange_rate TEXT,
                     UNIQUE (Web_ID) ON CONFLICT IGNORE)""")
@@ -39,7 +39,6 @@ with contextlib.closing(sqlite3.connect(DB_FILENAME)) as con:  # auto-closes
                     Web_ID TEXT PK,
                     Dresses_Length TEXT,
                     Type TEXT,
-                    Details TEXT,
                     Sleeve_Length TEXT,
                     Season TEXT,
                     Waist_Line TEXT,
@@ -56,7 +55,6 @@ with contextlib.closing(sqlite3.connect(DB_FILENAME)) as con:  # auto-closes
                     Web_ID TEXT PK,
                     Length TEXT,
                     Type TEXT,
-                    Details TEXT,
                     Season TEXT,
                     Sheer TEXT,
                     Fit_Type TEXT,
@@ -77,13 +75,14 @@ with contextlib.closing(sqlite3.connect(DB_FILENAME)) as con:  # auto-closes
                     FOREIGN KEY (Web_ID) REFERENCES products(Web_ID),
                     UNIQUE (Web_ID) ON CONFLICT IGNORE)""")
 
-# common in t-shirts and dresses
-# Type TEXT,
-# Details TEXT,
-# Season TEXT,
-# Sleeve_Length TEXT,
-# Sheer TEXT,
-# Fit_Type TEXT,
-# Sleeve_Type TEXT,
-
-#we need to adjust them in sql_insert_product, configuration (product_col_list etc)
+        # common in t-shirts and dresses
+        cur.execute("""CREATE TABLE common_desc(
+                    Web_ID TEXT PK,
+                    Type TEXT,
+                    Season TEXT,
+                    Sleeve_Length TEXT,
+                    Sleeve_Type TEXT,
+                    Sheer TEXT,
+                    Fit_Type TEXT,
+                    FOREIGN KEY (Web_ID) REFERENCES products(Web_ID),
+                    UNIQUE (Web_ID) ON CONFLICT IGNORE)""")
