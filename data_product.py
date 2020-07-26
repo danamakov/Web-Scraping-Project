@@ -42,7 +42,8 @@ def get_data(url, section):
     prod_dict[ID] = soup_find(soup, DIV, CLASS_ID).strip().split()[ID_SPLIT_NUM]
 
     # adding price for the product:
-    prod_dict[PRICE] = float(soup_find(soup, DIV, CLASS_PRICE).split(PRICE_SPLIT_SIGN)[PRICE_SPLIT_NUM].strip())
+    prod_price = float(soup_find(soup, DIV, CLASS_PRICE).split(PRICE_SPLIT_SIGN)[PRICE_SPLIT_NUM].strip())
+    prod_dict[PRICE] = prod_price
 
     # adding average rate for the product:
     prod_dict[RATE] = float(soup_find(soup, DIV, CLASS_RATE).strip())
@@ -61,7 +62,7 @@ def get_data(url, section):
             item.text.split(DESC_SPLIT_TYPE)[DESC_SEC_SPLIT_NUM].strip()
 
     # adding the price and date from the exchange_api file
-    prod_dict[PRICE_EXCHANGE] = exchange_rate
+    prod_dict[PRICE_EXCHANGE] = exchange_rate * prod_price
     prod_dict[DATE_EXCHANGE] = date_exchange_rate
 
     #adding product_type by the section:
