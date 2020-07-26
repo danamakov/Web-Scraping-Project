@@ -14,7 +14,8 @@ with contextlib.closing(sqlite3.connect(DB_FILENAME)) as con:  # auto-closes
     with con:
         cur = con.cursor()
         cur.execute("""CREATE TABLE products(
-                    Web_ID TEXT PK,
+                    Item_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    Web_ID TEXT,
                     Product_type TEXT,
                     Price INTEGER,
                     Average_rating REAL,
@@ -33,56 +34,46 @@ with contextlib.closing(sqlite3.connect(DB_FILENAME)) as con:  # auto-closes
                     Price_ILS REAL,
                     Date_exchange_rate TEXT,
                     UNIQUE (Web_ID) ON CONFLICT IGNORE)""")
-        cur.execute('CREATE INDEX i on products(Web_ID)')
 
         cur.execute("""CREATE TABLE dresses(
-                    Web_ID TEXT PK,
+                    Dress_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    Item_ID INTEGER,
                     Dresses_Length TEXT,
-                    Type TEXT,
-                    Sleeve_Length TEXT,
-                    Season TEXT,
                     Waist_Line TEXT,
-                    Sheer TEXT,
                     Hem_Shaped TEXT,
-                    Fit_Type TEXT,
                     Belt TEXT,
-                    Sleeve_Type TEXT,
-                    Lining TEXT,    
-                    FOREIGN KEY (Web_ID) REFERENCES products(Web_ID),
-                    UNIQUE (Web_ID) ON CONFLICT IGNORE)""")
+                    Sleeve_Type TEXT,  
+                    FOREIGN KEY (Item_ID) REFERENCES products(Item_ID),
+                    UNIQUE (Item_ID) ON CONFLICT IGNORE)""")
 
         cur.execute("""CREATE TABLE t_shirts(
-                    Web_ID TEXT PK,
+                    T_Shirt_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    Item_ID INTEGER,
                     Length TEXT,
-                    Type TEXT,
-                    Season TEXT,
-                    Sheer TEXT,
-                    Fit_Type TEXT,
-                    Sleeve_Length TEXT,
-                    Sleeve_Type TEXT,
                     Placket_Type TEXT,
                     Arabian_Clothing TEXT,
-                    FOREIGN KEY (Web_ID) REFERENCES products(Web_ID),
-                    UNIQUE (Web_ID) ON CONFLICT IGNORE)""")
+                    FOREIGN KEY (Item_ID) REFERENCES products(Item_ID),
+                    UNIQUE (Item_ID) ON CONFLICT IGNORE)""")
 
         cur.execute("""CREATE TABLE swimwear(
-                    Web_ID TEXT PK,
+                    Swimwear_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    Item_ID INTEGER,
                     Bra TEXT,
-                    Type TEXT,
                     Bottom_Type TEXT,
                     Lining TEXT,
                     Chest_pad TEXT,
-                    FOREIGN KEY (Web_ID) REFERENCES products(Web_ID),
-                    UNIQUE (Web_ID) ON CONFLICT IGNORE)""")
+                    FOREIGN KEY (Item_ID) REFERENCES products(Item_ID),
+                    UNIQUE (Item_ID) ON CONFLICT IGNORE)""")
 
         # common in t-shirts and dresses
         cur.execute("""CREATE TABLE common_desc(
-                    Web_ID TEXT PK,
+                    Common_Desc_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    Item_ID INTEGER,
                     Type TEXT,
                     Season TEXT,
                     Sleeve_Length TEXT,
                     Sleeve_Type TEXT,
                     Sheer TEXT,
                     Fit_Type TEXT,
-                    FOREIGN KEY (Web_ID) REFERENCES products(Web_ID),
-                    UNIQUE (Web_ID) ON CONFLICT IGNORE)""")
+                    FOREIGN KEY (Item_ID) REFERENCES products(Item_ID),
+                    UNIQUE (Item_ID) ON CONFLICT IGNORE)""")

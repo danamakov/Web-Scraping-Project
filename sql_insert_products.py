@@ -16,30 +16,33 @@ def sql_insert(data_list_products, section):
             cur = con.cursor()
 
             for dict in data_list_products:
-                cur.execute("INSERT OR IGNORE INTO products VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                cur.execute(f"INSERT OR IGNORE INTO products (Web_ID, Product_type, Price, Average_rating, \
+                Reviews_amount, Small, True_to_Size, Large, Style, Color, Pattern_Type, Neckline, Composition, \
+                Material, Fabric, Details, Date_exchange_rate, Price_ILS) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
                             [dict[val] if val in dict else UNKNOWN for val in PRODUCT_COL_LIST])
-                cur.execute('CREATE INDEX i on products(Web_ID)')
                 con.commit()
 
                 # adding more fields related to t-shirts and dresses to more_desc table:
-                cur.execute("INSERT OR IGNORE INTO common_desc VALUES (?,?,?,?,?,?,?)",
+                cur.execute("INSERT OR IGNORE INTO common_desc (Item_ID, Type, Season, Sleeve_Length, Sleeve_Type,\
+                 Sheer, Fit_Type) VALUES (?,?,?,?,?,?,?)",
                             [dict[val] if val in dict else UNKNOWN for val in MORE_DESC_COL_LIST])
                 con.commit()
 
             if section == 'DRESSES':
                 for dict in data_list_products:
-                    cur.execute("INSERT OR IGNORE INTO dresses VALUES (?,?,?,?,?,?)",
+                    cur.execute("INSERT OR IGNORE INTO dresses (Item_ID, Dresses_Length, Waist_Line, Hem_Shaped, \
+                    Belt, Sleeve_Type) VALUES (?,?,?,?,?,?)",
                                 [dict[val] if val in dict else UNKNOWN for val in DRESSES_COL_LIST])
                     con.commit()
 
             elif section == 'TOPS':
                 for dict in data_list_products:
-                    cur.execute("INSERT OR IGNORE INTO t_shirts VALUES (?,?,?,?)",
-                                [dict[val] if val in dict else UNKNOWN for val in TSHIRTS_COL_LIST])
+                    cur.execute("INSERT OR IGNORE INTO t_shirts (Item_ID, Length, Placket_Type, Arabian_Clothing) \
+                    VALUES (?,?,?,?)", [dict[val] if val in dict else UNKNOWN for val in TSHIRTS_COL_LIST])
                     con.commit()
 
             elif section == 'SWIMWEAR':
                 for dict in data_list_products:
-                    cur.execute("INSERT OR IGNORE INTO swimwear VALUES (?,?,?,?,?)",
-                                [dict[val] if val in dict else UNKNOWN for val in SWIMWEAR_COL_LIST])
+                    cur.execute("INSERT OR IGNORE INTO swimwear (Item_ID, Bra, Bottom_Type, Lining, Chest_pad) \
+                    VALUES (?,?,?,?,?)", [dict[val] if val in dict else UNKNOWN for val in SWIMWEAR_COL_LIST])
                     con.commit()
