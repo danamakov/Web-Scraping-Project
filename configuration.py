@@ -3,15 +3,17 @@ A file with all const variables.
 In order to change their value it must be changed in this file
 """
 
-# command line constants:
+# main_scrap constants:
 PRODUCT_SCRAP_OPT = {'t', 'a', 'd', 's', 'T', 'A', 'D', 'S'}
 SCRAP_LIMIT = 1000
 COLOR_SCRAP_OPT = ['Blue', 'Pink', 'Green', 'Red', 'Multi', 'Purple', 'Brown', 'White',
                        'Grey', 'Yellow', 'Khaki', 'Black', 'Orange']
 SECTION_DICT = {'t': 'TOPS', 'd': 'DRESSES', 's': 'SWIMWEAR'}
+LOGGING_NEW_RUN = "----------- << NEW RUN {} >> -----------"
 
 
 # exchange_api constants:
+API_REQUEST = 'https://api.ratesapi.io/api/{}?base={}&symbols={}'
 BASE_EX_RATE = 'USD' #from which coin do the exchange
 SYMBOL_EX_RATE = 'ILS' #to which coin do the exchange
 GET_RATE_JASON_EX = 'rates'
@@ -48,6 +50,11 @@ URL_PROD_SPLIT_SIGN = '"'
 HTML_END = ".html"
 FROM = 1
 TO = -4
+LOGGING_FORMAT = '%(asctime)s %(message)s'
+LOGGING_FILE_NAME = 'logging.log'
+LOGGING_FILE_MODE = 'a'
+LOGGING_ATT_ERROR = 'There is a problem with the url: {}'
+LOGGING_VAL_ERROR = 'There is a problem with the url: {}'
 
 
 # data_product constants:
@@ -76,6 +83,8 @@ CLASS_DESCRIPTION = "product-intro__description-table-item"
 DESC_FIRST_SPLIT_NUM = 0
 DESC_SEC_SPLIT_NUM = 1
 DESC_SPLIT_TYPE = ":"
+ROUND_PRICE_EX = 2
+PRODUCT_TYPE = 'Product_type'
 
 
 # html_soup constants:
@@ -124,14 +133,14 @@ COL_D_WAIST_LINE = 'Waist Line'
 COL_D_HEM_SHAPED = 'Hem Shaped'
 COL_D_BELT = 'Belt'
 COL_D_LINING = 'Lining'
-DRESSES_COL_LIST = [COL_D_WEB_ID, COL_D_DRESS_LENGTH, COL_D_WAIST_LINE, COL_D_HEM_SHAPED, COL_D_BELT, COL_D_LINING]
+DRESSES_COL_LIST = [COL_D_DRESS_LENGTH, COL_D_WAIST_LINE, COL_D_HEM_SHAPED, COL_D_BELT]
 
 ## T-shirts/tops table
 COL_T_WEB_ID = 'ID'
 COL_T_LENGTH = 'Length'
 COL_T_PLACKET_TYPE = 'Placket Type'
 COL_T_ARABIAN_CLOTHING = 'Arabian Clothing'
-TSHIRTS_COL_LIST = [COL_T_WEB_ID, COL_T_LENGTH, COL_T_PLACKET_TYPE, COL_T_ARABIAN_CLOTHING]
+TSHIRTS_COL_LIST = [COL_T_LENGTH, COL_T_PLACKET_TYPE, COL_T_ARABIAN_CLOTHING]
 
 ## swimwear table
 COL_S_WEB_ID = 'ID'
@@ -139,7 +148,7 @@ COL_S_BRA_TYPE = 'Bra Type'
 COL_S_BOTTOM_TYPE = 'Bottom Type'
 COL_S_LINING = 'Lining'
 COL_S_CHEST_PAD = 'Chest pad'
-SWIMWEAR_COL_LIST = [COL_S_WEB_ID, COL_S_BRA_TYPE, COL_S_BOTTOM_TYPE, COL_S_LINING, COL_S_CHEST_PAD]
+SWIMWEAR_COL_LIST = [COL_S_BRA_TYPE, COL_S_BOTTOM_TYPE, COL_S_LINING, COL_S_CHEST_PAD]
 
 ## more_desc table
 COL_M_WEB_ID = 'ID'
@@ -150,6 +159,86 @@ COL_M_SLEEVE_TYPE = 'Sleeve Type'
 COL_M_SHEER = 'Sheer'
 COL_M_FIT_TYPE = 'Fit Type'
 
-
-MORE_DESC_COL_LIST = [COL_M_WEB_ID, COL_M_TYPE, COL_M_SEASON, COL_M_SLEEVE_LENGTH, COL_M_SLEEVE_TYPE,
+MORE_DESC_COL_LIST = [COL_M_TYPE, COL_M_SEASON, COL_M_SLEEVE_LENGTH, COL_M_SLEEVE_TYPE,
                       COL_M_SHEER, COL_M_FIT_TYPE]
+
+# sql queries of sql_insert_products file
+SQL_INSERT_TO_PRODUCTS = f"INSERT OR IGNORE INTO products (Web_ID, Product_type, Price, Average_rating, \
+                        Reviews_amount, Small, True_to_Size, Large, Style, Color, Pattern_Type, Neckline, Composition, \
+                        Material, Fabric, Details, Date_exchange_rate, Price_ILS) VALUES \
+                         (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
+SQL_INSERT_TO_COMMON_DESC = "INSERT OR IGNORE INTO common_desc (Type, Season, Sleeve_Length, Sleeve_Type,\
+                            Sheer, Fit_Type) VALUES (?,?,?,?,?,?)"
+SQL_INSERT_TO_DRESSES = "INSERT OR IGNORE INTO dresses (Dresses_Length, Waist_Line, Hem_Shaped, Belt) VALUES (?,?,?,?)"
+SQL_INSERT_TO_T_SHIRTS = "INSERT OR IGNORE INTO t_shirts (Length, Placket_Type, Arabian_Clothing) \
+                    VALUES (?,?,?)"
+SQL_INSERT_TO_SWIMWEAR = "INSERT OR IGNORE INTO swimwear (Bra, Bottom_Type, Lining, Chest_pad) \
+                    VALUES (?,?,?,?)"
+SQL_DRESSES_SEC = 'DRESSES'
+SQL_T_SHIRTS_SEC = 'TOPS'
+SQL_SWIMWEAR_SEC = 'SWIMWEAR'
+
+# sql_db_build file:
+SQL_TABLE_PRODUCTS = """CREATE TABLE products(
+                    Item_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    Web_ID TEXT,
+                    Product_type TEXT,
+                    Price INTEGER,
+                    Average_rating REAL,
+                    Reviews_amount INTEGER,
+                    Small INTEGER,
+                    True_to_Size INTEGER,
+                    Large INTEGER,
+                    Style TEXT,
+                    Color TEXT,
+                    Pattern_Type TEXT,
+                    Neckline TEXT,
+                    Composition TEXT,
+                    Material TEXT,
+                    Fabric TEXT,
+                    Details TEXT,
+                    Price_ILS REAL,
+                    Date_exchange_rate TEXT,
+                    UNIQUE (Web_ID) ON CONFLICT IGNORE,
+                    FOREIGN KEY (Item_ID) REFERENCES dresses(Item_ID)
+                    FOREIGN KEY (Item_ID) REFERENCES t_shirts(Item_ID)
+                    FOREIGN KEY (Item_ID) REFERENCES swimwear(Item_ID)
+                    FOREIGN KEY (Item_ID) REFERENCES common_desc(Item_ID));"""
+SQL_TABLE_DRESSES = """CREATE TABLE dresses(
+                    Dress_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    Item_ID INTEGER,
+                    Dresses_Length TEXT,
+                    Waist_Line TEXT,
+                    Hem_Shaped TEXT,
+                    Belt TEXT);"""
+SQL_TABLE_T_SHIRTS = """CREATE TABLE t_shirts(
+                    T_Shirt_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    Item_ID INTEGER,
+                    Length TEXT,
+                    Placket_Type TEXT,
+                    Arabian_Clothing TEXT,
+                    FOREIGN KEY (Item_ID) REFERENCES products(Item_ID),
+                    UNIQUE (Item_ID) ON CONFLICT IGNORE);"""
+SQL_TABLE_SWIMWEAR = """CREATE TABLE swimwear(
+                    Swimwear_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    Item_ID INTEGER,
+                    Bra TEXT,
+                    Bottom_Type TEXT,
+                    Lining TEXT,
+                    Chest_pad TEXT,
+                    FOREIGN KEY (Item_ID) REFERENCES products(Item_ID),
+                    UNIQUE (Item_ID) ON CONFLICT IGNORE);"""
+SQL_TABLE_COMMON_DESC = """CREATE TABLE common_desc(
+                    Common_Desc_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    Item_ID INTEGER,
+                    Type TEXT,
+                    Season TEXT,
+                    Sleeve_Length TEXT,
+                    Sleeve_Type TEXT,
+                    Sheer TEXT,
+                    Fit_Type TEXT,
+                    FOREIGN KEY (Item_ID) REFERENCES products(Item_ID),
+                    UNIQUE (Item_ID) ON CONFLICT IGNORE);"""
+
+
+

@@ -9,9 +9,9 @@ In this web scrapping YOU can decide which products to scrap, how many products,
 
 Authors: Limor Nunu, Dana Makov
 """
-from shein import web_scrap
-from data_product import product_info
-from sql_insert_products import sql_insert
+from shein import Web_scrap
+from data_product import Data_product
+from sql_insert_products import Sql_insert_products
 from configuration import *
 import click
 import logging
@@ -41,11 +41,11 @@ def main(product, number, price, color):
     This program retrieves products information from the http://us.shein.com website.
     You can decide which products to scrap, how many products, color and max price.
     """
-    logging.basicConfig(format='%(asctime)s %(message)s',
-                        filename='logging.log', filemode='a')
+    logging.basicConfig(format=LOGGING_FORMAT,
+                        filename=LOGGING_FILE_NAME, filemode=LOGGING_FILE_MODE)
     logger = logging.getLogger()
     logger.setLevel(logging.NOTSET)
-    logger.info(f"----------- << NEW RUN {datetime.datetime.now()} >> -----------")
+    logger.info(LOGGING_NEW_RUN.format(datetime.datetime.now()))
 
     # setting the product type
     try:
@@ -95,11 +95,13 @@ def main(product, number, price, color):
         logger.warning(f"There is a problem with user's input: max price - '{price}'")
 
     section, num, price, color = SECTION_DICT[prod_to_scrap], n_to_scrap, sort_max_price, sort_color
-    url_choice, number, section = web_scrap(section, num, price, color)
-    products_list, section = product_info(url_choice, number, section)
-    sql_insert(products_list, section)
+    url_choice, number, section = Web_scrap.web_scrap(section, num, price, color)
+    products_list, section = Data_product.product_info(url_choice, number, section)
+    Sql_insert_products.sql_insert(products_list, section)
 
 
 if __name__ == '__main__':
-    """ call the above function """
+    """ 
+    call the above function 
+    """
     main()

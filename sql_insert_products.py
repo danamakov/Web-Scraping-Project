@@ -3,46 +3,47 @@ import contextlib
 from configuration import *
 
 
-def sql_insert(data_list_products, section):
-    """
-    :param data_list_products: get list of dictionaries of all the info for each product.
-           Every item in the list is for different product.
-    :param section: the chosen section (dresses\tops\swimwear)
-    The function insert the info of the products into the database.
-    """
+class Sql_insert_products:
+    @staticmethod
+    def insert_data(cur, con, col_dict, query, col_list):
+        """
+        :param cur: connection to cursor
+        :param con: creating connection to sqlite
+        :param col_dict: dict of product
+        :param query: sql query
+        :param col_list: list of columns names
+        This function commit SQL query, and by that inserting data to table.
+        """
+        cur.execute(query, [col_dict[val] if val in col_dict else UNKNOWN for val in col_list])
+        con.commit()
 
-    with contextlib.closing(sqlite3.connect(DB_FILENAME)) as con:  # auto-closes
-        with con:
-            cur = con.cursor()
+    @staticmethod
+    def sql_insert(data_list_products, section):
+        """
+        :param data_list_products: get list of dictionaries of all the info for each product.
+               Every item in the list is for different product.
+        :param section: the chosen section (dresses\tops\swimwear)
+        The function insert the info of the products into the database, using the insert_data function.
+        """
 
-            for dict in data_list_products:
-                cur.execute(f"INSERT OR IGNORE INTO products (Web_ID, Product_type, Price, Average_rating, \
-                Reviews_amount, Small, True_to_Size, Large, Style, Color, Pattern_Type, Neckline, Composition, \
-                Material, Fabric, Details, Date_exchange_rate, Price_ILS) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
-                            [dict[val] if val in dict else UNKNOWN for val in PRODUCT_COL_LIST])
-                con.commit()
+        with contextlib.closing(sqlite3.connect(DB_FILENAME)) as con:  # auto-closes
+            with con:
+                cur = con.cursor()
 
-                # adding more fields related to t-shirts and dresses to more_desc table:
-                cur.execute("INSERT OR IGNORE INTO common_desc (Item_ID, Type, Season, Sleeve_Length, Sleeve_Type,\
-                 Sheer, Fit_Type) VALUES (?,?,?,?,?,?,?)",
-                            [dict[val] if val in dict else UNKNOWN for val in MORE_DESC_COL_LIST])
-                con.commit()
-
-            if section == 'DRESSES':
                 for dict in data_list_products:
-                    cur.execute("INSERT OR IGNORE INTO dresses (Item_ID, Dresses_Length, Waist_Line, Hem_Shaped, \
-                    Belt, Sleeve_Type) VALUES (?,?,?,?,?,?)",
-                                [dict[val] if val in dict else UNKNOWN for val in DRESSES_COL_LIST])
-                    con.commit()
+                    Sql_insert_products.insert_data(cur, con, dict, SQL_INSERT_TO_PRODUCTS, PRODUCT_COL_LIST)
 
-            elif section == 'TOPS':
-                for dict in data_list_products:
-                    cur.execute("INSERT OR IGNORE INTO t_shirts (Item_ID, Length, Placket_Type, Arabian_Clothing) \
-                    VALUES (?,?,?,?)", [dict[val] if val in dict else UNKNOWN for val in TSHIRTS_COL_LIST])
-                    con.commit()
+                    # adding more fields related to t-shirts and dresses to more_desc table:
+                    Sql_insert_products.insert_data(cur, con, dict, SQL_INSERT_TO_COMMON_DESC, MORE_DESC_COL_LIST)
 
-            elif section == 'SWIMWEAR':
-                for dict in data_list_products:
-                    cur.execute("INSERT OR IGNORE INTO swimwear (Item_ID, Bra, Bottom_Type, Lining, Chest_pad) \
-                    VALUES (?,?,?,?,?)", [dict[val] if val in dict else UNKNOWN for val in SWIMWEAR_COL_LIST])
-                    con.commit()
+                if section == SQL_DRESSES_SEC:
+                    for dict in data_list_products:
+                        Sql_insert_products.insert_data(cur, con, dict, SQL_INSERT_TO_DRESSES, DRESSES_COL_LIST)
+
+                elif section == SQL_T_SHIRTS_SEC:
+                    for dict in data_list_products:
+                        Sql_insert_products.insert_data(cur, con, dict, SQL_INSERT_TO_T_SHIRTS, TSHIRTS_COL_LIST)
+
+                elif section == SQL_SWIMWEAR_SEC:
+                    for dict in data_list_products:
+                        Sql_insert_products.insert_data(cur, con, dict, SQL_INSERT_TO_SWIMWEAR, SWIMWEAR_COL_LIST)
