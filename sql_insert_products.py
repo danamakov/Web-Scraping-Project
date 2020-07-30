@@ -40,7 +40,7 @@ class Sql_insert_products:
         """
         con = pymysql.connect(host=CONNECT_DB_HOST,
                               user=CONNECT_DB_USER,
-                              password=CONNECT_DB_PASSWORD,
+                              password='123456',
                               db=CONNECT_DB_DB,
                               charset=CONNECT_DB_CHARSET,
                               cursorclass=pymysql.cursors.DictCursor)
