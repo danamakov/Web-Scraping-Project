@@ -2,20 +2,31 @@
 This file creates the database, and you run it only once.
 """
 
-import sqlite3
-import os
-import contextlib
+import pymysql.cursors
+import mysql.connector
 from configuration import *
 
-if os.path.exists(DB_FILENAME):
-    os.remove(DB_FILENAME)
+# Create database
+con = mysql.connector.connect(host=CONNECT_DB_HOST,
+                              user=CONNECT_DB_USER,
+                              password=CONNECT_DB_PASSWORD)
 
-with contextlib.closing(sqlite3.connect(DB_FILENAME)) as con:  # auto-closes
-    with con:
-        cur = con.cursor()
-        cur.execute(SQL_TABLE_PRODUCTS)
-        cur.execute(SQL_TABLE_DRESSES)
-        cur.execute(SQL_TABLE_T_SHIRTS)
-        cur.execute(SQL_TABLE_SWIMWEAR)
-        # common in t-shirts and dresses
-        cur.execute(SQL_TABLE_COMMON_DESC)
+cur = con.cursor()
+cur.execute(SQL_CREATE_DB)
+
+# Create tables
+con = pymysql.connect(host=CONNECT_DB_HOST,
+                      user=CONNECT_DB_USER,
+                      password=CONNECT_DB_PASSWORD,
+                      db=CONNECT_DB_DB,
+                      charset=CONNECT_DB_CHARSET,
+                      cursorclass=pymysql.cursors.DictCursor)
+
+cur = con.cursor()
+with cur:
+    cur = con.cursor()
+    cur.execute(SQL_TABLE_PRODUCTS)
+    cur.execute(SQL_TABLE_DRESSES)
+    cur.execute(SQL_TABLE_T_SHIRTS)
+    cur.execute(SQL_TABLE_SWIMWEAR)
+    cur.execute(SQL_TABLE_COMMON_DESC)

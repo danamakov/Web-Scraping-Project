@@ -1,11 +1,15 @@
-import sqlite3
-import contextlib
-from configuration import *
+import pymysql.cursors
 
-table = "products"
-with contextlib.closing(sqlite3.connect(DB_FILENAME)) as con:  # auto-closes
-    with con:
-        cur = con.cursor()
-        cur.execute(f"select * from {table}")
-        for i in cur.fetchall():
-            print(i)
+table = "t_shirts"
+con = pymysql.connect(host='localhost',
+                      user='root',
+                      password='123456',
+                      db='shein',
+                      charset='utf8mb4',
+                      cursorclass=pymysql.cursors.DictCursor)
+cur = con.cursor()
+with cur:
+    cur.execute(f"""select * from {table}""")
+    con.commit()
+for i in cur.fetchall():
+    print(i)

@@ -163,82 +163,97 @@ MORE_DESC_COL_LIST = [COL_M_TYPE, COL_M_SEASON, COL_M_SLEEVE_LENGTH, COL_M_SLEEV
                       COL_M_SHEER, COL_M_FIT_TYPE]
 
 # sql queries of sql_insert_products file
-SQL_INSERT_TO_PRODUCTS = f"INSERT OR IGNORE INTO products (Web_ID, Product_type, Price, Average_rating, \
-                        Reviews_amount, Small, True_to_Size, Large, Style, Color, Pattern_Type, Neckline, Composition, \
-                        Material, Fabric, Details, Date_exchange_rate, Price_ILS) VALUES \
-                         (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
-SQL_INSERT_TO_COMMON_DESC = "INSERT OR IGNORE INTO common_desc (Type, Season, Sleeve_Length, Sleeve_Type,\
-                            Sheer, Fit_Type) VALUES (?,?,?,?,?,?)"
-SQL_INSERT_TO_DRESSES = "INSERT OR IGNORE INTO dresses (Dresses_Length, Waist_Line, Hem_Shaped, Belt) VALUES (?,?,?,?)"
-SQL_INSERT_TO_T_SHIRTS = "INSERT OR IGNORE INTO t_shirts (Length, Placket_Type, Arabian_Clothing) \
-                    VALUES (?,?,?)"
-SQL_INSERT_TO_SWIMWEAR = "INSERT OR IGNORE INTO swimwear (Bra, Bottom_Type, Lining, Chest_pad) \
-                    VALUES (?,?,?,?)"
+CONNECT_DB_HOST = 'localhost'
+CONNECT_DB_USER = 'root'
+CONNECT_DB_PASSWORD = '1234'
+CONNECT_DB_DB = 'shein'
+CONNECT_DB_CHARSET = 'utf8mb4'
+
+SQL_INSERT_TO_PRODUCTS = """INSERT INTO products (Web_ID, Product_type, Price, Average_rating, 
+                        Reviews_amount, Small, True_to_Size, Large, Style, Color, Pattern_Type, Neckline, Composition,
+                        Material, Fabric, Details, Date_exchange_rate, Price_ILS) VALUES
+                         (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+
+SQL_INSERT_TO_COMMON_DESC = """INSERT INTO common_desc (Type, Season, Sleeve_Length, Sleeve_Type,
+                            Sheer, Fit_Type) VALUES (%s,%s,%s,%s,%s,%s)"""
+SQL_INSERT_TO_DRESSES = """INSERT INTO dresses (Dresses_Length, Waist_Line, Hem_Shaped, Belt) VALUES (%s,%s,%s,%s)"""
+SQL_INSERT_TO_T_SHIRTS = """INSERT INTO t_shirts (Length, Placket_Type, Arabian_Clothing) 
+                    VALUES (%s,%s,%s)"""
+SQL_INSERT_TO_SWIMWEAR = """INSERT INTO swimwear (Bra, Bottom_Type, Lining, Chest_pad)
+                    VALUES (%s,%s,%s,%s)"""
 SQL_DRESSES_SEC = 'DRESSES'
 SQL_T_SHIRTS_SEC = 'TOPS'
 SQL_SWIMWEAR_SEC = 'SWIMWEAR'
+GET_WEB_ID = 'ID'
+GET_ITEM_ID = 'Item_ID'
+SQL_ITEM_ID_QUERY = "SELECT Item_ID FROM products WHERE Web_ID = %s"
+SQL_UPDATE_FK_COMMON_DESC = """UPDATE common_desc SET Item_ID = %s ORDER BY Common_Desc_ID DESC LIMIT 1"""
+SQL_UPDATE_FK_DRESSES = """UPDATE dresses SET Item_ID = %s ORDER BY Dress_ID DESC LIMIT 1"""
+SQL_UPDATE_FK_T_SHIRTS = """UPDATE t_shirts SET Item_ID = %s ORDER BY T_Shirt_ID DESC LIMIT 1"""
+SQL_UPDATE_FK_SWIMWEAR = """UPDATE swimwear SET Item_ID = %s ORDER BY Swimwear_ID DESC LIMIT 1"""
 
 # sql_db_build file:
+SQL_CREATE_DB = "CREATE DATABASE IF NOT EXISTS shein"
 SQL_TABLE_PRODUCTS = """CREATE TABLE products(
-                    Item_ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                    Web_ID TEXT,
-                    Product_type TEXT,
+                    Item_ID INTEGER PRIMARY KEY AUTO_INCREMENT,
+                    Web_ID CHAR(45),
+                    Product_type CHAR(45),
                     Price INTEGER,
                     Average_rating REAL,
-                    Reviews_amount INTEGER,
-                    Small INTEGER,
-                    True_to_Size INTEGER,
-                    Large INTEGER,
-                    Style TEXT,
-                    Color TEXT,
-                    Pattern_Type TEXT,
-                    Neckline TEXT,
-                    Composition TEXT,
-                    Material TEXT,
-                    Fabric TEXT,
-                    Details TEXT,
+                    Reviews_amount CHAR(45),
+                    Small CHAR(45),
+                    True_to_Size CHAR(45),
+                    Large CHAR(45),
+                    Style CHAR(45),
+                    Color CHAR(45),
+                    Pattern_Type CHAR(45),
+                    Neckline CHAR(45),
+                    Composition CHAR(45),
+                    Material CHAR(45),
+                    Fabric CHAR(45),
+                    Details CHAR(255),
                     Price_ILS REAL,
-                    Date_exchange_rate TEXT,
-                    UNIQUE (Web_ID) ON CONFLICT IGNORE,
-                    FOREIGN KEY (Item_ID) REFERENCES dresses(Item_ID)
-                    FOREIGN KEY (Item_ID) REFERENCES t_shirts(Item_ID)
-                    FOREIGN KEY (Item_ID) REFERENCES swimwear(Item_ID)
-                    FOREIGN KEY (Item_ID) REFERENCES common_desc(Item_ID));"""
+                    Date_exchange_rate CHAR(45),
+                    UNIQUE (Web_ID))"""
 SQL_TABLE_DRESSES = """CREATE TABLE dresses(
-                    Dress_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    Dress_ID INTEGER PRIMARY KEY AUTO_INCREMENT,
                     Item_ID INTEGER,
-                    Dresses_Length TEXT,
-                    Waist_Line TEXT,
-                    Hem_Shaped TEXT,
-                    Belt TEXT);"""
+                    Dresses_Length CHAR(45),
+                    Waist_Line CHAR(45),
+                    Hem_Shaped CHAR(45),
+                    Belt CHAR(45),
+                    FOREIGN KEY (Item_ID) REFERENCES products(Item_ID))"""
 SQL_TABLE_T_SHIRTS = """CREATE TABLE t_shirts(
-                    T_Shirt_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    T_Shirt_ID INTEGER PRIMARY KEY AUTO_INCREMENT,
                     Item_ID INTEGER,
-                    Length TEXT,
-                    Placket_Type TEXT,
-                    Arabian_Clothing TEXT,
-                    FOREIGN KEY (Item_ID) REFERENCES products(Item_ID),
-                    UNIQUE (Item_ID) ON CONFLICT IGNORE);"""
+                    Length CHAR(45),
+                    Placket_Type CHAR(45),
+                    Arabian_Clothing CHAR(45),
+                    FOREIGN KEY (Item_ID) REFERENCES products(Item_ID)
+                        ON UPDATE CASCADE
+                        ON DELETE CASCADE)"""
 SQL_TABLE_SWIMWEAR = """CREATE TABLE swimwear(
-                    Swimwear_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    Swimwear_ID INTEGER PRIMARY KEY AUTO_INCREMENT,
                     Item_ID INTEGER,
-                    Bra TEXT,
-                    Bottom_Type TEXT,
-                    Lining TEXT,
-                    Chest_pad TEXT,
-                    FOREIGN KEY (Item_ID) REFERENCES products(Item_ID),
-                    UNIQUE (Item_ID) ON CONFLICT IGNORE);"""
+                    Bra CHAR(45),
+                    Bottom_Type CHAR(45),
+                    Lining CHAR(45),
+                    Chest_pad CHAR(45),
+                    FOREIGN KEY (Item_ID) REFERENCES products(Item_ID)
+                        ON UPDATE CASCADE
+                        ON DELETE CASCADE)"""
 SQL_TABLE_COMMON_DESC = """CREATE TABLE common_desc(
-                    Common_Desc_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    Common_Desc_ID INTEGER PRIMARY KEY AUTO_INCREMENT,
                     Item_ID INTEGER,
-                    Type TEXT,
-                    Season TEXT,
-                    Sleeve_Length TEXT,
-                    Sleeve_Type TEXT,
-                    Sheer TEXT,
-                    Fit_Type TEXT,
-                    FOREIGN KEY (Item_ID) REFERENCES products(Item_ID),
-                    UNIQUE (Item_ID) ON CONFLICT IGNORE);"""
+                    Type CHAR(45),
+                    Season CHAR(45),
+                    Sleeve_Length CHAR(45),
+                    Sleeve_Type CHAR(45),
+                    Sheer CHAR(45),
+                    Fit_Type CHAR(45),
+                    FOREIGN KEY (Item_ID) REFERENCES products(Item_ID)
+                        ON UPDATE CASCADE
+                        ON DELETE CASCADE)"""
 
 
 
