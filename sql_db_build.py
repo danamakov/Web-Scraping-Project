@@ -9,7 +9,7 @@ from configuration import *
 # Create database
 con = mysql.connector.connect(host=CONNECT_DB_HOST,
                               user=CONNECT_DB_USER,
-                              password=CONNECT_DB_PASSWORD)
+                              password='1234')
 
 cur = con.cursor()
 cur.execute(SQL_CREATE_DB)
@@ -17,7 +17,7 @@ cur.execute(SQL_CREATE_DB)
 # Create tables
 con = pymysql.connect(host=CONNECT_DB_HOST,
                       user=CONNECT_DB_USER,
-                      password=CONNECT_DB_PASSWORD,
+                      password='1234',
                       db=CONNECT_DB_DB,
                       charset=CONNECT_DB_CHARSET,
                       cursorclass=pymysql.cursors.DictCursor)
