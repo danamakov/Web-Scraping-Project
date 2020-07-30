@@ -3,7 +3,7 @@ import pymysql.cursors
 table = "t_shirts"
 con = pymysql.connect(host='localhost',
                       user='root',
-                      password='123456',
+                      password='Ab123456',
                       db='shein',
                       charset='utf8mb4',
                       cursorclass=pymysql.cursors.DictCursor)
