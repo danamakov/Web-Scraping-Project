@@ -169,7 +169,7 @@ CONNECT_DB_PASSWORD = 'Ab123456'
 CONNECT_DB_DB = 'shein'
 CONNECT_DB_CHARSET = 'utf8mb4'
 
-SQL_INSERT_TO_PRODUCTS = """INSERT INTO products (Web_ID, Product_type, Price, Average_rating, 
+SQL_INSERT_TO_PRODUCTS = """INSERT IGNORE INTO products (Web_ID, Product_type, Price, Average_rating, 
                         Reviews_amount, Small, True_to_Size, Large, Style, Color, Pattern_Type, Neckline, Composition,
                         Material, Fabric, Details, Date_exchange_rate, Price_ILS) VALUES
                          (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
