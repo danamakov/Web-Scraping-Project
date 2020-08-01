@@ -27,7 +27,7 @@ class Sql_insert_products:
         :param item_id: item ID of the product in the products table
         This function commit SQL query, and by that updating the FK in the tables by the products table.
         """
-        cur.execute(query, item_id)
+        cur.execute(query, item_id, item_id)
         con.commit()
 
     @staticmethod
