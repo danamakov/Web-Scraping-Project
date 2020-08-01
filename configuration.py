@@ -217,7 +217,7 @@ SQL_TABLE_PRODUCTS = """CREATE TABLE products(
                     UNIQUE (Web_ID))"""
 SQL_TABLE_DRESSES = """CREATE TABLE dresses(
                     Dress_ID INTEGER PRIMARY KEY AUTO_INCREMENT,
-                    Item_ID INTEGER UNIQUE,
+                    Item_ID INTEGER,
                     Dresses_Length CHAR(45),
                     Waist_Line CHAR(45),
                     Hem_Shaped CHAR(45),
@@ -225,7 +225,7 @@ SQL_TABLE_DRESSES = """CREATE TABLE dresses(
                     FOREIGN KEY (Item_ID) REFERENCES products(Item_ID))"""
 SQL_TABLE_T_SHIRTS = """CREATE TABLE t_shirts(
                     T_Shirt_ID INTEGER PRIMARY KEY AUTO_INCREMENT,
-                    Item_ID INTEGER UNIQUE,
+                    Item_ID INTEGER,
                     Length CHAR(45),
                     Placket_Type CHAR(45),
                     Arabian_Clothing CHAR(45),
@@ -234,7 +234,7 @@ SQL_TABLE_T_SHIRTS = """CREATE TABLE t_shirts(
                         ON DELETE CASCADE)"""
 SQL_TABLE_SWIMWEAR = """CREATE TABLE swimwear(
                     Swimwear_ID INTEGER PRIMARY KEY AUTO_INCREMENT,
-                    Item_ID INTEGER UNIQUE,
+                    Item_ID INTEGER,
                     Bra CHAR(45),
                     Bottom_Type CHAR(45),
                     Lining CHAR(45),
@@ -244,7 +244,7 @@ SQL_TABLE_SWIMWEAR = """CREATE TABLE swimwear(
                         ON DELETE CASCADE)"""
 SQL_TABLE_COMMON_DESC = """CREATE TABLE common_desc(
                     Common_Desc_ID INTEGER PRIMARY KEY AUTO_INCREMENT,
-                    Item_ID INTEGER UNIQUE,
+                    Item_ID INTEGER,
                     Type CHAR(45),
                     Season CHAR(45),
                     Sleeve_Length CHAR(45),

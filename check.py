@@ -1,6 +1,8 @@
 import pymysql.cursors
 
-table = "t_shirts"
+table = "dresses"
+# table = "products"
+
 con = pymysql.connect(host='localhost',
                       user='root',
                       password='Ab123456',

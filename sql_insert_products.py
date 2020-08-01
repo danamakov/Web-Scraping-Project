@@ -54,15 +54,19 @@ class Sql_insert_products:
                 cur.execute(SQL_ITEM_ID_QUERY, dict[GET_WEB_ID])
                 item_id = cur.fetchone()[GET_ITEM_ID]
 
-                # adding more fields related to t-shirts and dresses to more_desc table:
-                Sql_insert_products.insert_data(cur, con, dict, SQL_INSERT_TO_COMMON_DESC, MORE_DESC_COL_LIST)
-                Sql_insert_products.update_fk(cur, con, SQL_UPDATE_FK_COMMON_DESC, item_id)
-
                 if section == SQL_DRESSES_SEC:
+                    # adding more fields related to t-shirts and dresses to more_desc table:
+                    Sql_insert_products.insert_data(cur, con, dict, SQL_INSERT_TO_COMMON_DESC, MORE_DESC_COL_LIST)
+                    Sql_insert_products.update_fk(cur, con, SQL_UPDATE_FK_COMMON_DESC, item_id)
+
                     Sql_insert_products.insert_data(cur, con, dict, SQL_INSERT_TO_DRESSES, DRESSES_COL_LIST)
                     Sql_insert_products.update_fk(cur, con, SQL_UPDATE_FK_DRESSES, item_id)
 
                 elif section == SQL_T_SHIRTS_SEC:
+                    # adding more fields related to t-shirts and dresses to more_desc table:
+                    Sql_insert_products.insert_data(cur, con, dict, SQL_INSERT_TO_COMMON_DESC, MORE_DESC_COL_LIST)
+                    Sql_insert_products.update_fk(cur, con, SQL_UPDATE_FK_COMMON_DESC, item_id)
+
                     Sql_insert_products.insert_data(cur, con, dict, SQL_INSERT_TO_T_SHIRTS, TSHIRTS_COL_LIST)
                     Sql_insert_products.update_fk(cur, con, SQL_UPDATE_FK_T_SHIRTS, item_id)
 
