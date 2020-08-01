@@ -1,7 +1,6 @@
 import pymysql.cursors
 
 table = "dresses"
-# table = "products"
 
 con = pymysql.connect(host='localhost',
                       user='root',
