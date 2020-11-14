@@ -3,7 +3,6 @@
 
 In this project we retrive data from the website: 
 #### https://us.shein.com
- [![Build Status](http://cdn.parcelsapp.com/assets/landing/carriers/shein-208ca201157daf4e9f330022e23deb4cdacdbecba8f2a57a946a4e9f4060d33c.jpg)](https://travis-ci.org/joemccann/dillinger)
 The website contains thousands of products, we decided to focus on dresses, tops and swimwear.
 For each product we gather data as: price, color, rating, style, etc...
 For doing so, we used selenium and beautifulsoup packages and wrote the script in python.
