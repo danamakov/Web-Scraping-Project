@@ -1,7 +1,7 @@
 # ITC PROJECT
 ### web scrapping!
 
-In this project we retrive data from the website: 
+In this project we retrieve data from the website:
 #### https://us.shein.com
 The website contains thousands of products, we decided to focus on dresses, tops and swimwear.
 For each product we gather data as: price, color, rating, style, etc...
